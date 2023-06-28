@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-affirm",
+      "2": "I-affirm",
+      "3": "L-affirm",
+      "4": "U-affirm",
+      "5": "B-excitement",
+      "6": "I-excitement",
+      "7": "L-excitement",
+      "8": "U-excitement",
+      "9": "B-greet",
+      "10": "I-greet",
+      "11": "L-greet",
+      "12": "U-greet",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-affirm": 1,
+      "I-affirm": 2,
+      "L-affirm": 3,
+      "U-affirm": 4,
+      "B-excitement": 5,
+      "I-excitement": 6,
+      "L-excitement": 7,
+      "U-excitement": 8,
+      "B-greet": 9,
+      "I-greet": 10,
+      "L-greet": 11,
+      "U-greet": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

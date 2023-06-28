@@ -1,0 +1,14 @@
+[
+  {
+    "name": "greet",
+    "pattern": "(\\bhii\\b|\\bhello\\b|\\bhey\\b)"
+  },
+  {
+    "name": "affirm",
+    "pattern": "(\\byes\\b|\\byeah\\b|\\bwhy\\ not\\b|\\byep\\b|\\byup\\b)"
+  },
+  {
+    "name": "excitement",
+    "pattern": "(\\bgreat\\b|\\bawesome\\b|\\bamazing\\b|\\bwonderful\\b|\\bwow\\b)"
+  }
+]

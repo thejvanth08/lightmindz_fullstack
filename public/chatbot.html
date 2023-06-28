@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chatbot.css">
+    <title>AI Chatbot</title>
+</head>
+<body>
+
+      <!-- <h2 class="heading">Talk with our Friendly Chatbot</h2> -->
+    <img src="/assets/bot.png" width="120" height="120"> 
+    <div class="container">
+
+        <div class="head">
+            <h3>LightMindz</h3>
+        </div>
+
+        <div id="chats" class="chats">
+
+            <!-- <div class="rasa left">
+                <p>hi my friend</p>
+            </div>
+            <div class="user right">
+                <p>hi rasa</p>
+            </div>
+            <div class="rasa left">
+                <p>how are u friend</p>
+            </div> -->
+
+        </div>
+
+        
+    </div>
+    <div class="bottom">
+        <!-- value attri must be included to access the data inside input element -->
+        <button id="end" class="end">end</button>
+        <input id="user-msg" name="user-msg" value="" class="input-box" type="text">
+        <button id="send" name="send" class="send">send</button>
+    </div>
+    
+
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- script link -->
+    <script src="chatbot.js"></script>
+</body>
+</html>

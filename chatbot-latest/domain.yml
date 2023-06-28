@@ -1,0 +1,148 @@
+version: "3.1"
+
+intents:
+   - greet
+   - goodbye
+   - question
+   - bot_challenge
+   - delight
+   - mood_joly
+   - mood_unhappy
+   - thanks
+   - affrim
+   - excitment
+   - family_problems
+   - work_problems
+   - stress
+   - cant_focus
+   - proj_tension
+   - boring
+   - depressed
+   - headache
+   - fever
+   - manage_stress
+   - self_care_activities
+   - support_friend
+   - signs_anxiety
+   - improve_sleep_quality
+   - dealing_with_depression
+   - strategies_anxiety
+   - seeking_therapy
+   - dealing_with_loneliness
+   - practicing_mindfulness
+   - coping_with_work_pressure
+  # - lookup: name
+  # examples: |
+  #   - ritik
+  #   - aniket
+  #   - vishwesh
+  #   - shubhankar
+  #   - archita
+  #   - rahul
+  #   - vishwa
+  #   - thejvanth
+  #   - nk darshan
+
+initpayload:
+- text: "hleooooooooooooooo"
+  
+
+responses: 
+
+  utter_greet:
+  - text: "Hey Hello, Welcome to Lightminds ❤️ \n How are you? "
+  
+  utter_goodbye:
+  - text: "Bye :( "
+  - text: "Meet you Again"
+  utter_question:
+  - text: "As an AI language model, I don't have feelings, but I'm functioning well with some bugs. "
+  
+  utter_bot_challenge:
+  - text: "Yes,I'm a Bot powered by AI developed by B2W"
+
+  utter_delight:
+  - text: "Nice.."
+  - text: "Awsome"
+ 
+
+  utter_joly:
+  - text: "Nice \n How was Today?"
+  
+  utter_mood_unhappy :
+  - text : "What Happen?\n Can you tell breif about it"
+
+  utter_thanks:
+  - text: "You are Welcome😎"
+  - text: "Welcome"
+  - text: "😊"
+
+  utter_affrim:
+  - text: "Ok"
+
+  utter_excitment:
+  - text: "Really"
+
+  utter_boring:
+  - text: "I Think that this topic from YouTube will recover from boring https://www.youtube.com/feed/trending "
+  - text: "Intresting Video https://youtu.be/aqz-KE-bpKQ "
+  - text: "Hear Some Music https://music.youtube.com/ "
+  - text: "Play some Games https://play.geforcenow.com/ "
+
+  utter_breif:
+  - text: "Tell Breif about that"
+
+  utter_depressed:
+  - text: "Here are a few suggestions:\n1.Take a break: Sometimes taking a break from what you're doing and taking some time to relax can help you feel better. This could be as simple as taking a walk, practicing some deep breathing exercises, or engaging in a hobby that you enjoy.\n\n2.Exercise: Physical activity can help reduce stress and release tension. You don't need to do anything too intense - even a short walk or yoga session can help.\n\n3.Practice mindfulness: Mindfulness involves paying attention to the present moment without judgment. This can help you feel more calm and centered. There are many mindfulness techniques you can try, such as meditation, deep breathing, or progressive muscle relaxation.\n\n4.Talk to someone: Talking to a friend, family member, or mental health professional can be a great way to get support and perspective. Sometimes just expressing your feelings can help reduce stress.\n\n5.Take care of yourself: Make sure you're getting enough sleep, eating a healthy diet, and engaging in activities that bring you joy."
+
+  utter_ headache:
+  - text: "Take a Sleep"
+  - text: "How many hours you take sleep"
+  - text: "Using Mobile phone for long time?"
+
+  # utter_fever:
+  # - text: "Can you have cold (or) cough"
+  # - text: "Have you eaten any cold food"
+  # - text: "Have you drink any colddrinks"
+  # - text: "Did you play in The Rain?"
+
+
+
+  utter_manage_stress:
+  - text: "There are several techniques you can try to manage stress. Some options include deep breathing exercises, regular physical activity, practicing mindfulness or meditation, and maintaining a healthy lifestyle with proper sleep and nutrition."
+
+  utter_self_care_activities:
+  - text: "Self-care is essential for mental well-being. Some self-care activities you can try include taking a walk in nature, engaging in hobbies or activities you enjoy, spending time with loved ones, practicing relaxation techniques like taking a bath or reading a book, and ensuring you get enough rest and sleep."
+
+  utter_support_friend:
+  - text: "Supporting a friend in need is crucial. You can start by listening to them without judgment and offering a safe space for them to express their feelings. Encourage them to seek professional help if needed and provide resources such as helpline numbers or mental health websites. Let them know they're not alone and that you're there to support them throughout their journey."
+
+  utter_signs_anxiety:
+  - text: "Common signs of anxiety can include excessive worrying, restlessness, irritability, difficulty concentrating, trouble sleeping, and physical symptoms like rapid heartbeat or shortness of breath. However, it's important to consult a mental health professional for an accurate diagnosis if you suspect you or someone else may be experiencing anxiety."
+
+  utter_improve_sleep_quality:
+  - text: "Improving sleep quality is essential for mental well-being. You can establish a consistent sleep schedule, create a relaxing bedtime routine, avoid electronic devices before bed, create a comfortable sleep environment, limit caffeine and alcohol intake, and manage stress through relaxation techniques."
+
+  utter_dealing_with_depression:
+  - text: "Coping with depression can be challenging, but there are strategies that can help. It's important to maintain a support network, engage in activities you enjoy, practice self-care, consider therapy or counseling, and consult with a mental health professional for guidance tailored to your situation."
+
+  utter_strategies_anxiety:
+  - text: "Managing anxiety involves finding strategies that work for you. Some techniques include deep breathing exercises, progressive muscle relaxation, challenging negative thoughts, practicing self-care, and seeking therapy or counseling for additional support."
+
+  utter_seeking_therapy:
+  - text: "Finding the right therapist is an important step. You can start by researching therapists in your area, considering their specialization and approach. It can be beneficial to schedule an initial consultation to determine if the therapist is a good fit for you. Remember, therapy can provide valuable support and tools for improving your mental health."
+
+  utter_dealing_with_loneliness:
+  - text: "Coping with loneliness can be challenging, but there are strategies to help. Consider reaching out to friends or family, joining social or hobby groups, volunteering, or seeking support from a therapist or counselor. Building social connections and engaging in activities that bring you joy can help alleviate feelings of loneliness."
+
+  utter_practicing_mindfulness:
+  - text: "Mindfulness involves being fully present in the moment and accepting your thoughts and feelings without judgment. You can practice mindfulness through techniques like meditation, deep breathing exercises, and paying attention to your senses. Regular mindfulness practice can help reduce stress and improve overall well-being."
+
+  utter_coping_with_work_pressure:
+  - text: "Managing work-related stress is important for your mental well-being. Set boundaries, prioritize tasks, practice time management, take regular breaks, and engage in stress-reducing activities outside of work. Seeking support from colleagues, supervisors, or a mental health professional can also be beneficial."
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

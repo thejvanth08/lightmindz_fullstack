@@ -1,0 +1,585 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;600;700&family=Leckerli+One&family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* CSS Reset */
+* {
+    font-family: "Poppings", san-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* to remove default focus style */
+    outline: none;
+    border: none;
+    text-decoration: none;
+    list-style-type: none;
+    /* to apply transition time for all prop changes */
+    transition: all .2s;
+}
+
+/* Variables */
+:root {
+    --PRIMARY-COLOR: #5928E5;
+    /* --PRIMARY-COLOR: #009DFF; */
+    --SECONDARY-COLOR: #F5ECFF;  
+    --TERTIARY-COLOR: #C5B8EF;
+    --OTHER-COLOR: #FEFEDF; 
+}
+
+
+/* General CSS */
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Hind', sans-serif;
+    overflow-x: hidden;
+} 
+
+h1, h2, h3 {
+    font-family: "Montserrat", sans-serif;
+}
+
+.hero-desc{
+    font-size: 1.1em;
+    color: var(--SECONDARY-COLOR);
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-text {
+    color: var(--SECONDARY-COLOR);
+    font-size: 1.1em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+header {
+    background-color: var(--PRIMARY-COLOR);
+    color: white;
+}
+
+.nav-bar {
+    position: absolute;
+    transform: translateY(-100%);
+    top: 0;
+    right: 0;
+    transition: all 1s;
+    transition: transform 0.5s;
+}
+
+.nav-bar.active {
+    transform: translateX(0%);
+    width: 50%;
+    height: 100vh;
+    background-color: white;
+    text-transform: uppercase;
+} 
+
+.nav-bar.active a {
+    display: block;
+    padding: 20px 16px;
+    padding-left: 50px;
+    text-align: left;
+}
+
+.nav-bar.active ul a:hover {
+    color: white;
+    background-color: var(--TERTIARY-COLOR);
+}
+
+.nav-bar.active ul {
+    margin-top: 40px;
+}
+
+.close-nav-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#close-nav {
+    /* color of icon is white */
+    color: black;
+    z-index: 1000;
+    font-size: 2em;
+    margin: 30px 30px 0;
+    cursor: pointer;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: start;
+    margin-top: 30px;
+}
+
+.profile-container i {
+    font-size: 2.5em;
+    color: rgb(172, 172, 172);
+    padding: 16px;
+    border: 5px solid rgb(172, 172, 172);
+    border-radius: 50%;
+}
+
+
+/* hero section */
+
+#hero {
+    background-color: var(--PRIMARY-COLOR);
+    color: white;
+}
+
+.hero-img img {
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+header {
+    padding: 18px 25px;
+}
+
+.logo {
+    grid-column: 1/5;
+    /* parent - relative container */
+    position: relative;
+}
+
+.logo img {
+    position: absolute;
+    left: 0;
+}
+
+.logo .logo-text {
+    position: absolute;
+    /* right: 0; */
+    left: 30px;
+}
+
+.icons {
+    grid-column: 8/9;
+    /* not including dark mode now */
+    /* to move right side */
+    /* margin-left: 40px; */
+}
+
+.icons i {
+    display: inline-block;
+    /* margin-left: 18px; */
+    font-size: 1.3em;
+}
+
+section {
+    padding: 0 30px;
+}
+
+.hero-text {
+    grid-column: 1/9;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.hero-img {
+    grid-column: 2/8;
+    /* background-color: white; */
+    border-radius: 87% 13% 60% 41% / 49% 50% 51% 51%;
+}
+
+.hero-desc {
+    margin-top: 8px;
+    /* line-height: 1.2; */
+}
+
+#hero-wave{
+    position: relative;
+    z-index: -1;
+    bottom: 2px;
+}
+
+/* Features stlyes */
+.outer {
+    grid-column: 3/7;
+    background-color: #FAEAFF;
+    /* color: var(--PRIMARY-COLOR); */
+    color: #5A85AD;
+    border-radius: 20px;
+    /* try margin: 0 auto */
+    margin-bottom: 20px;
+    /* aligns both text and img */
+    text-align: center;
+    padding: 20px 15px;
+    
+    /* temporarily*/
+    cursor: pointer;
+}
+
+/* to remove default link color */
+.outer a:link, .outer a:visited, .outer a:hover, .outer a:active { 
+    color:#5A85AD; 
+} 
+
+.outer h4 {
+    margin-top: 8px;
+    /* font-style: italic; */
+}
+
+.outer:hover {
+    box-shadow: 3px 3px 3px rgb(255, 192, 250);
+}
+
+
+/* Footer styles */
+#footer {
+    background-color: var(--PRIMARY-COLOR);
+    color: white;
+    padding: 30px 15px;
+}
+
+#footer div {
+    grid-column: 3/7;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+#footer li a {
+    color: white;
+}
+
+#footer-wave {
+    position: relative;
+    top: 10px;
+}
+
+.flogo img {
+    margin-right: 5px;
+    position: relative;
+    top: 5px;
+}
+
+#footer h3 {
+    margin-bottom: 3px;
+}
+
+#footer h4 {
+    font-size: 1.1em;
+    color: var();
+}
+
+#footer-wave {
+    position: relative;
+    top: 10px;
+}
+
+.logo-light {
+    color: #fff700;
+}
+
+
+
+/* Media queries */
+
+/* For small tablets (from 620px) */
+@media all and (min-width: 620px) {
+
+    #hero {
+        padding: 25px 25px 0px;
+    }
+
+    .hero-text {
+        /* 5 cols for text */
+        grid-column: 1/6;
+        text-align: left;
+    }
+
+    .hero-img {
+        /* 3 cols for img */
+        grid-column: 6/9;
+    }
+
+    .grid {
+        gap: 15px;
+    }
+
+    #feature {
+        margin-top: -20px;
+    }
+
+    .heading {
+        margin-bottom: 45px;
+    }
+
+    .outer {
+        width: 85%;
+        /* justify-content: center; */
+
+        /* this is different from margin: 0 auto */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+        padding: 30px 10px;
+    }
+
+    /* choosing child which are positioned odd */
+    .outer:nth-child(odd) {
+        grid-column: 1/5;
+        background-color: #FAEAFF;
+        
+        /* aligns both text and img */
+        text-align: center;
+    }
+
+    .outer:nth-child(even) {
+        grid-column: 5/9;
+    }
+
+    .outer:last-child {
+        grid-column: 3/7;
+    }
+
+    .outer h4 {
+        font-size: 1.1em;
+        margin-top: 10px;
+    }
+
+    .outer img {
+        width: 110px;
+        height: auto;
+    }
+}
+
+
+/* For large tablets & laptops (from 960px) */
+@media all and (min-width: 960px) {
+
+    body {
+        font-size: 18px;
+    }
+
+    .nav-bar {
+        transform: translateX(0%);
+        position: static;
+     
+        transition: all 0.3s;
+    }
+
+    /* to not hide close btn in nav-bar (which is for mobile) */
+    .close-nav-container {
+        display: none;
+    }
+
+    #close-nav {
+        display: none;
+    }
+    /* this is only for mobile and small tablets */
+    .profile-container {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    header .logo {
+        grid-column: 1/4;
+        margin-left: 20px;
+    }
+
+    .hero-text {
+        /* text, img -> equal cols */
+        grid-column: 1/5;
+        /* vertically align center */
+        align-self: center;
+    }
+
+    .hero-img {
+        grid-column: 5/9;
+    }
+
+    .hero-img img {
+        width: 85%;
+        height: auto;
+        margin: auto;
+    }
+
+    .icons {
+        display: none;
+    }
+
+    /* displaying navbar */
+    header .nav-bar {
+        display: block;
+    }
+
+    .nav-bar {
+        grid-column: 4/9;
+    }
+    
+    .nav-bar ul {
+        display: flex;
+    }
+
+    .nav-bar li a {
+        display: inline-block;
+        color: white;
+        padding: 10px 20px;
+    }
+
+    .nav-bar li a:hover {
+        background-color: white;
+        color: var(--PRIMARY-COLOR);
+    }
+
+    /* features section */
+    #features {
+        margin-bottom: 40px;
+    }
+    /* to change the layout for arranging in 3*3 manner */
+    #features .grid {
+        grid-template-columns: repeat(9, 1fr);
+        gap: 15px;
+    }
+
+    #features .heading {
+        font-size: 1.8em;
+        margin-bottom: 60px;
+    }
+
+    .outer {
+        width: 85%;
+        /* justify-content: center; */
+
+        /* this is different from margin: 0 auto */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+        padding: 30px 10px;
+    }
+
+    /* choosing child which are positioned odd */
+    .outer:nth-child(1) {
+        grid-column: 1/4;
+    }
+    .outer:nth-child(2) {
+        grid-column: 4/7;
+    }
+    .outer:nth-child(3) {
+        grid-column: 7/10;
+    }
+    .outer:nth-child(4) {
+        grid-column: 1/4;
+    }
+    .outer:nth-child(5) {
+        grid-column: 4/7;
+    }
+    .outer:nth-child(6) {
+        grid-column: 7/10;
+    }
+    .outer:nth-child(7) {
+        grid-column: 1/4;
+    }
+    .outer:nth-child(8) {
+        grid-column: 4/7;
+    }
+    .outer:nth-child(9) {
+        grid-column: 7/10;
+    }
+
+
+    .outer h4 {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+    .outer img {
+        width: 130px;
+        height: auto;
+    }
+
+
+
+
+    #footer-wave {
+        top: 15px;
+    }
+
+    #footer div:first-child{
+        grid-column: 1/3;
+    }
+
+    #footer div:nth-child(2) {
+        text-align: left;
+        grid-column: 4/6;
+    }
+    
+    #footer div:last-child{
+        text-align: left;
+        grid-column: 7/9;
+    }
+
+}
+
+/* For desktops */
+@media all and (min-width: 1200px) {
+
+    body {
+        font-size: 20px;
+    }
+
+    #hero, #benefits, #features, #procedure, #testimonials, header {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
+    header {
+        padding-top: 30px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    /* features section */
+
+    
+    #features .heading {
+        font-size: 1.8em;
+        margin-bottom: 70px;
+    }
+
+    .outer {
+        width: 80%;
+        margin-bottom: 50px;
+        padding: 35px 18px;
+    }
+
+    .outer h4 {
+        font-size: 1.3em;
+        margin-top: 10px;
+    }
+
+    .outer img {
+        width: 150px;
+        /* height: auto */
+    }
+
+
+    #footer div {
+        /* to make eveything center */
+        margin: 0 auto;
+    }
+}
+    

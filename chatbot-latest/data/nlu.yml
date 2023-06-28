@@ -1,0 +1,505 @@
+version: "3.1"
+
+nlu:
+
+# - lookup: greet
+#   examples: |
+#     - hii
+#     - hello
+#     - hey
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - good morning
+    - good evening
+    - hey there 
+    - hello there
+    - good afternoon
+    - moi
+    - noo
+    - let's g
+    - hey dud
+
+
+    
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you around
+    - see you later
+    - Good night!
+    - cheerio
+    - see you
+    - catch you later
+    - i gotta take off
+    - have a good one
+    - keep in touch 
+    - Imm off
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later    
+
+- intent: question
+  examples: |
+    - how are you?
+    - how r u?
+    - what about you?
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - who are you
+    - who y u    
+
+- intent: delight
+  examples: |
+    - watching movies
+    - going on a walk
+    - going for shopping
+    - meaningful work
+    - productive day
+    - workout
+    - family
+    - spending time with my bestfriend
+    - positive thinking
+    - gratitude
+    - giving to others    
+
+- intent: mood_joly
+  examples: |
+    - amazing
+    - happy
+    - very good
+    - I am feeling very good
+    - I am feeling good
+    - I'm good
+    - Today is a great day
+    - I am so happy today
+    - I'm happy
+    - Happy
+    - perfect
+    - very good
+    - great
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I'm good
+    - feel good
+    - veryy happy
+    - Life's good
+    - Awesome
+    - Happy to hear that
+    - I'm happy to hear that
+    - I'm so happy today
+    - I'm fine
+    - I'm perfectly fine
+    - Doing great.
+    - I'm ok
+    - I'm doing good
+    - Today is really wonderfull day
+    - Feeling good
+    - feeling great
+    - I'm happpyyy
+    - I'm so happy
+
+- intent: mood_unhappy
+  examples: |
+    - I am sad
+    - I am very sad
+    - I am unhappy sad
+    - I am feeling very bad
+    - i am feeling awful
+    - I am in terrible mood right now
+    - i am extremely sad
+    - so sad
+    - worse than ever
+    - I'm feeling a bit gloomy.
+    - I'm feeling a little blue right now
+    - I'm worried so much
+    - I'm anxious
+    - I'm totally irritated..
+    - So gloomy..
+    - I said that i'm happy but actually i'm not happy
+    - I'm terribly sad today
+    - I'm really disappointed today
+    - I'm so depressed.
+    - I'm totally distressed
+    - I'm too frustrated
+    - I'm feeling down.
+    - I'm worried
+    - I'm really upset these days.
+######################################################################S
+
+- intent: thanks
+  examples: |
+    - Thanks
+    - Thank You
+    - thanks
+    - thanks a lot 
+    - thank you so much 
+    - thanks dear
+    - Thank you so much for being there
+    - thats fine..thank you
+    - thank you for being there 
+    - yup..thanks 
+    - thnx
+    - nice video ....thanks
+    - thank you dear
+    - thanks
+
+
+- lookup: affirm
+  examples: |
+    - yes
+    - yeah
+    - why not
+    - yep
+    - yup
+
+- intent: affirm
+  examples: |
+    - yes(affirm)
+    - sure(affirm)
+    - oh yess(affirm)
+    - for sure(affirm)
+    - okay(affirm)
+    - alright(affirm)
+    - why not   
+
+
+- lookup: excitement
+  examples: |
+    - great
+    - awesome
+    - amazing
+    - wonderful
+    - wow
+
+
+- intent: excitement
+  examples: |
+    - thats great(excitement)
+    - awesome(excitement)
+    - amazing(excitement)
+
+- intent: family_problems
+  examples: |
+    - I hate my family.
+    - I dont know if I can finish this or not
+    - Too much work
+    - I hate my household
+    - I'm hateful to my family
+    - i don't want to be with my family anymore.
+    - I'm not going to be with my family
+    - I don't want my family to be with me
+    - I wouldn't like to be with my family
+    - I'd like to run away from home
+    - i want to run away from my home
+    - My parent are fighting
+    - I fight with my parents
+    - My parents dont understand me
+    - My parents always undermine me
+    - I think my parents don't like me
+    - I fight with my sister
+    - I fight with my brother
+    - my father shouted
+    - family problem
+- intent: work_problems
+  examples: |
+    - I have a lot of work to do
+    - exams are coming
+    - I have not studied enough
+    - So many assignments to do
+    - poor communication
+    - conflicting styles
+    - Interpersonal conflict
+    - Communication problems
+    - Gossip
+    - Bullying
+    - Harassment
+    - Discrimination
+    - Low motivation and job satisfaction
+    - Performance issues
+    - Poor job fit
+
+- intent: stress
+  examples: |
+    - going through a tough time
+    - Anxiety
+    - Depression
+    - Difficulty concentrating or making decisions
+    - Fatigue
+    - Mood swings
+    - Muscle tension and pain
+    - Stomach problems
+    
+- intent: boring
+  examples: |
+    - life is boring
+    - I am bored
+    - I have nothing to do
+    - I dont know what to do
+    - I'm so bored right now
+    - I'm so bored
+    - I'm quite bored
+    - I'm not having very much fun right now
+    - I'm not having very much fun
+    - I'm not having fun
+    - I'm freaking bored
+    - I'm bored to death
+    - I'm bored stiff
+    - I'm bored out of my mind
+    - I'm very bored
+    - I'm bored AF
+    - It's been a boring week
+    - I could die from boredom
+    - I can't think of anything I want to do
+    - I can't help it. I'm bored
+    - I can't help but be bored
+    - I am so bored right now
+    - I am so bored
+    - I am bored at work
+    - I am bored
+    - I am always bored
+    - I always seem to be bored
+    - Help! I'm bored.
+    - God, I am so bored
+    - i m so tired
+   
+- intent: cant_focus
+  examples: |
+    - I don't feel like studying
+    - I don't wanna study
+    - What's the point of studying
+    - Why should i study
+    - Focusing too hard
+    - Working on many things at same time
+    - Multitasking
+    - No physical activity
+    - Laziness
+    - Distracted by phone, people, surrounding
+    - Search for reasons to give up
+    - Tired 
+    - Hectic day
+    - Dull on mood 
+    - Too much stress
+    - too much to deal with on my plate
+    - Lack of sleep
+    - Improper sleeping routine
+    - Disturbed routine in life
+    - Lack of motivation
+    - Don't feel like doing it
+    - I do not feel satisfied with this 
+    - Poor job satisfaction
+    - Feeling depressed
+    - I want to distract myself
+    - Don't like this kind of work
+    - Not comfortable with what I am doing
+    - Change in lifestyle
+    - Change in surrounding at workplace
+    - Uncomfortable workspace
+    - Weather is making me feel down, low
+    - being unable to remember things that occurred a short time ago difficulty sitting still
+    - difficulty thinking clearly
+    - frequently losing things or difficulty remembering where things are inability to make decisions
+    - inability to perform complicated tasks
+    - lack of focus
+    - lacking physical or mental energy to concentrate
+    - making careless mistakes
+    - feeling restless
+    - cannot focus on an empty stomach
+    - need something to concentrate on
+    - unusual feelings of tiredness
+    - I know exactly what I need to do, but I can’t bring myself to do it
+    - I know what my objectives are, but I can’t figure out how to get there 
+    - Having trouble Prioritizing What’s Most Important
+    - Emotional Procrastination
+    - Time Management Issues
+    - I cannot manage time
+    - Physical issues
+    - Something is on my mind
+    - I am distracted by
+
+- intent: proj_tension
+  examples: |
+    - I won't complete my project in time
+    - I wont complete my project
+    - I dont know how to do my project
+    - My project is really hard
+    - Risk factors
+    - Fear of boss
+    - Fear of deadlines
+    - ear of failure of project
+    - Improper knowledge 
+    - Insufficient data
+    - lack of proper planning
+    - Lack of finance
+    - no sponsor for project
+    - less accuracy
+    - Unexpected output
+    - Unpredicted difficulties
+    - Unwanted problems
+    - presentation is not upto mark
+    - Inadequate risk management
+    - Project manager lack experience and training
+    - No use of formal methods and strategies
+    - Lack of effective communication
+    - Poor management of expectations
+    - Lack of detailed documentation
+    - Failure to track requirements
+    - Failure to track progress
+    - Lack of detail in the project plans
+    - Inaccurate time and effort estimates
+    - Last moment client changes
+    - Unsatisfied client
+    - - pressure from boss
+    - Pressure to meet the requirements within time
+    - Project data incorrect
+    - Indecisive problems
+    - Cannot make a firm decision
+    - Did not considered this kind of risk
+    - limited finance
+    - Lack of proper instruments
+    - Lack of technology
+    - Insolvable errors
+    - Improper build
+    - Reduced quality of project
+    - Quality factor
+    - Approval for the decisions made
+    - Extra funding
+    - Require more data
+    - Improper research
+    - Inexperienced team members
+    - New team members, team manager
+
+
+
+#################################
+
+- intent: headache
+  examples: | 
+    - head aching
+    - head was paining
+    - migraine problems
+
+# - intent: fever
+#   examples: | 
+#     - fever 
+#     - suffering from fever
+
+- intent: depressed
+  examples: |
+    - stress
+    - I'm depressed
+    - I feel horrible
+    - I'm not myself today
+    - I'm not myself these days
+    - I don't feel happy
+
+# - intent: Anxiety
+#   examples: |
+#     - I feel really anxious all the time. What can I do?
+#     - How can I manage my anxiety?
+#     - I have a presentation coming up, and I'm feeling extremely anxious about it.
+
+- intent: manage_stress
+  examples: |
+      - How can I manage stress in my daily life?
+      - What are some techniques to cope with stress?
+      - Ways to reduce stress?
+      - How do I handle stress better?
+      - Give me tips to manage stress.
+
+- intent: self_care_activities
+  examples: |
+      - What are some self-care activities that can improve my mental well-being?
+      - How can I practice self-care?
+      - Give me ideas for self-care.
+      - What activities can I do to take care of myself?
+      - How do I prioritize self-care in my routine?
+
+- intent: support_friend
+  examples: |
+      - How can I support a friend who may be struggling with their mental health?
+      - What should I do if my friend is having mental health issues?
+      - How can I be there for a friend who is going through a tough time?
+      - Ways to help a friend with their mental well-being?
+      - How do I start a conversation about mental health with a friend?
+
+- intent: signs_anxiety
+  examples: |
+      - What are some signs of anxiety that I should be aware of?
+      - How can I identify if I'm experiencing anxiety?
+      - What are the symptoms of anxiety?
+      - Signs that someone may be struggling with anxiety?
+      - When should I seek help for anxiety symptoms?
+
+- intent: improve_sleep_quality
+  examples: |
+      - How can I improve my sleep quality?
+      - Tips for getting better sleep.
+      - What can I do to sleep better?
+      - How to have a good night's sleep?
+      - How does sleep affect mental health?
+
+- intent: dealing_with_depression
+  examples: |
+      - How can I cope with depression?
+      - Tips for managing depression symptoms.
+      - What are some self-help strategies for depression?
+      - How to support someone with depression?
+      - When should I seek professional help for depression?
+
+- intent: strategies_anxiety
+  examples: |
+      - What are some strategies to manage anxiety?
+      - How can I calm my anxiety?
+      - Techniques to reduce anxiety symptoms.
+      - Coping mechanisms for anxiety attacks.
+      - How does lifestyle affect anxiety levels?
+
+- intent: seeking_therapy
+  examples: |
+      - How do I find the right therapist for me?
+      - What are the benefits of therapy?
+      - How can therapy help with mental health?
+      - What types of therapy are available?
+      - How to prepare for a therapy session?
+
+- intent: dealing_with_loneliness
+  examples: |
+      - How to cope with loneliness?
+      - Tips for overcoming loneliness.
+      - How to build social connections?
+      - How does loneliness affect mental health?
+      - Where can I find support for loneliness?
+
+- intent: practicing_mindfulness
+  examples: |
+      - What is mindfulness and how can I practice it?
+      - Benefits of mindfulness meditation.
+      - How to be more present in the moment?
+      - Techniques for mindfulness in daily life.
+      - Can mindfulness reduce stress?
+
+- intent: coping_with_work_pressure
+  examples: |
+      - How to handle work-related stress?
+      - Strategies for managing work pressure.
+      - Tips for achieving work-life balance.
+      - How to prioritize tasks and avoid burnout?
+      - How does workplace stress impact mental well-being?

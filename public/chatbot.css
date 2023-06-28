@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #F5ECFF;
+    color: #5928E5;
+}
+
+h2 {
+    text-align: center;
+    margin: 30px 10px;
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.3em;
+    letter-spacing: 1px;
+}
+
+img {
+    display: block;
+    margin: 0px auto 10px;
+}
+
+/* to hide scroll bar but keeps the functionality */
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    background-color: white;
+    /* color: #0061B0; */
+    width: 80%;
+    max-width: 500px;
+    height: 70vh;
+    margin: 0 auto;
+    /* border: 4px solid rgb(232, 220, 82); */
+    border-radius: 30px;
+
+    /* this only works */
+    overflow: auto;
+}
+
+.head {
+    background-color: #5928E5;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.chats {
+    padding: 20px 15px;
+    /* overflow: auto; this is not working */
+}
+
+.bottom {
+    width: 85%;
+    max-width: 500px;
+    padding: 0 15px 15px;
+    margin: 10px auto 0;
+    display: flex;
+}
+
+.bottom input {
+    display: block;
+    width: 55%;
+    height: 28px;
+}
+
+.send , .end {
+    margin-left: 5px;
+    width: 25%;
+    bottom: 30px;
+    padding: 5px 12px;
+    background-color: #5928E5;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.end {
+    width: 15%;
+    /* background-color: #7EE4C3; */
+    margin-right: 5px;
+}
+
+/* common to both bot + user chats */
+.chats div {
+    /* to break the word if it's overflows the container */
+    overflow-wrap: break-word;
+    padding: 10px 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    /* to only occupy  */
+    /* max-width: auto; */
+    max-width: 50%;
+}
+
+.left {
+    /* try this also */
+    /* float: left; this wont make those adjacent*/
+    text-align: left;
+    background-color: #b39ff4;
+    color: white;
+}
+
+.right {
+    /* to make text container appear at right */
+    /* float: right; */
+    /* above style is not working properly so use margin-left */
+
+    margin-left: auto;
+    text-align: right;
+    background-color: #f6f1fc;
+    padding: 10px 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+}
+
+/* user's input field */
+#user-msg {
+    font-size: 1.2em;
+    padding: 5px 8px;
+    height: 30px;
+}

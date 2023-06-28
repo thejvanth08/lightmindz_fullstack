@@ -1,0 +1,6 @@
+[
+  {
+    "name": "greet",
+    "pattern": "(\\bhii\\b|\\bhello\\b|\\bhey\\b)"
+  }
+]

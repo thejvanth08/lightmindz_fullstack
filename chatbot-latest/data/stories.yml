@@ -1,0 +1,153 @@
+version: "3.1"
+
+stories:
+- story: greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+  
+
+- story: outro
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+    
+
+- story: kelvi
+  steps:
+    - intent: question
+    - action: utter_question
+
+
+
+- story: challange
+  steps:
+    - intent: bot_challenge 
+    - action: utter_bot_challenge
+  
+
+- story: working
+  steps:
+    - intent: delight
+    - action: utter_delight
+
+
+
+- story: happy
+  steps:
+  - intent: mood_joly
+  - action: utter_joly 
+
+- story: unhappy
+  steps:
+  - intent: mood_unhappy
+  - action: utter_mood_unhappy   
+
+- story: thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+##################################################
+
+- story: affrim
+  steps:
+  - intent: affrim
+  - action: utter_affrim
+
+- story: excitment
+  steps:
+  - intent: excitment
+  - action: utter_excitment
+#####boring
+- story: boring
+  steps:
+  - intent: boring 
+  - action: utter_boring
+  - intent: affrim
+  - action: utter_affrim
+
+- story: problem
+  steps:
+  - intent: family_problems
+  - action: utter_breif    
+  - intent: work_problems
+  - action: utter_breif  
+  - intent: stress
+  - action: utter_breif  
+  - intent: cant_focus
+  - action: utter_breif  
+  - intent: proj_tension
+  - action: utter_breif  
+  - intent: affrim
+  - action: utter_affrim
+
+- story: depressed
+  steps:
+  - intent: depressed
+  - action: utter_depressed
+
+- story: headache
+  steps:
+  - intent: headache
+  - action: utter_ headache  
+
+# - story: fever
+#   steps:
+#   - intent: fever
+#   - action: utter_fever
+
+
+- story: User asks about managing stress
+  steps:
+  - intent: manage_stress
+  - action: utter_manage_stress
+
+- story: User asks about self-care activities
+  steps:
+  - intent: self_care_activities
+  - action: utter_self_care_activities
+
+- story: User seeks advice for supporting a friend
+  steps:
+  - intent: support_friend
+  - action: utter_support_friend
+
+- story: User inquires about signs of anxiety
+  steps:
+  - intent: signs_anxiety
+  - action: utter_signs_anxiety
+
+- story: User wants tips to improve sleep quality
+  steps:
+  - intent: improve_sleep_quality
+  - action: utter_improve_sleep_quality
+
+- story: User asks for coping strategies for depression
+  steps:
+  - intent: dealing_with_depression
+  - action: utter_dealing_with_depression
+
+- story: User seeks strategies to manage anxiety
+  steps:
+  - intent: strategies_anxiety
+  - action: utter_strategies_anxiety
+
+- story: User wants guidance on finding a therapist
+  steps:
+  - intent: seeking_therapy
+  - action: utter_seeking_therapy
+
+- story: User asks about coping with loneliness
+  steps:
+  - intent: dealing_with_loneliness
+  - action: utter_dealing_with_loneliness
+
+- story: User inquires about practicing mindfulness
+  steps:
+  - intent: practicing_mindfulness
+  - action: utter_practicing_mindfulness
+
+- story: User seeks advice on dealing with work pressure
+  steps:
+  - intent: coping_with_work_pressure
+  - action: utter_coping_with_work_pressure
