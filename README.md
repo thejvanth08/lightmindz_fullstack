@@ -1,0 +1,1 @@
+# lightmindz_fullstack
