@@ -4,7 +4,17 @@ export const UserContext = createContext({});
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [id, setId] = useState("123");
+  const [id, setId] = useState(null);
+
+  useEffect(() => {
+    // Check if user ID is stored in localStorage
+    const storedId = localStorage.getItem("userId");
+    if (storedId) {
+      setId(storedId);
+    } else {
+      console.log("userId in localStorage is not found");
+    }
+  }, []);
 
   const data = {
     user: user,
@@ -14,11 +24,9 @@ const ContextProvider = ({ children }) => {
   };
 
   return (
-    <div>
     <UserContext.Provider value={data}>
       {children}
     </UserContext.Provider>
-    </div>
   );
 }
 

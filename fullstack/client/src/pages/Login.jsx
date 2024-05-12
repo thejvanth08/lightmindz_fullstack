@@ -1,5 +1,7 @@
 import loginImg from "../assets/images/login.svg";
 import {Logo, Input} from "../components";
+import { useContext } from "react";
+import { UserContext } from "../UserContext";
 import {useForm} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,17 +10,26 @@ import * as yup from "yup";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setId } = useContext(UserContext);
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().min(6).max(20).required()
+    password: yup.string().min(3).max(20).required()
   });
 
   const {register, handleSubmit, formState: { errors }} = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = async (formData) => {
-    const { data } = await axios.post("/login", formData);
-    console.log("Errors", errors);
+  const onSubmit = async ({email, password}) => {
+    try {
+      const { data } = await axios.post("/login", {email, password});
+      const userId = data.id;
+      setId(userId);
+      localStorage.setItem("userId", userId);
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+    }
+  
   }
 
   return (

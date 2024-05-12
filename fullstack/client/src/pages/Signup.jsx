@@ -1,17 +1,21 @@
-import signupImg from "../assets/images/login.svg";
+import signupImg from "../assets/images/signup.svg";
 import { Logo, Input } from "../components";
+import { useContext } from "react";
+import { UserContext } from "../UserContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+
 const Signup = () => {
   const navigate = useNavigate();
+  const { setId } = useContext(UserContext);
 
    const schema = yup.object().shape({
      email: yup.string().email().required(),
-     password: yup.string().min(6).max(20).required(),
+     password: yup.string().min(3).max(20).required(),
      confirmPassword: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords don't match")
@@ -25,9 +29,20 @@ const Signup = () => {
   } = useForm({ resolver: yupResolver(schema)});
 
   const onSubmit = async ({email, password}) => {
-    const { data } = await axios.post("/signup", {email, password});
-    console.log(formData);
-    console.log(data);
+    try {
+      const { data } = await axios.post("/signup", {email, password});
+      const userId = data.id;
+      setId(userId);
+      // storing it in localstorage, because during routing the component remounts
+      // which results in resetting the state to default value
+      localStorage.setItem("userId", userId);
+      navigate("/details-one");
+    } catch(err) {
+      // if account already exists
+      // console.log(err.response?.data?.error);
+      // alert(err.response?.data?.error);
+      console.log(err);
+    }
   };
 
   return (
