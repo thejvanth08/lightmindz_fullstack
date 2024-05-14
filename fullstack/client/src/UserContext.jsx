@@ -1,26 +1,29 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
+import axios from "axios";
 
 export const UserContext = createContext({});
 
+export const useAppData = () => {
+  return useContext(UserContext);
+};
+
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [id, setId] = useState(null);
-
-  useEffect(() => {
-    // Check if user ID is stored in localStorage
-    const storedId = localStorage.getItem("userId");
-    if (storedId) {
-      setId(storedId);
-    } else {
-      console.log("userId in localStorage is not found");
-    }
-  }, []);
+  const [id, setId] = useState(123);
+  // user details
+  const [details, setDetails] = useState({});
+  // user mood -> happy, sad,..
+  const [mood, setMood] = useState(null);
 
   const data = {
     user: user,
     setUser: setUser,
     id : id,
-    setId
+    setId: setId,
+    details: details,
+    setDetails: setDetails,
+    // mood: mood,
+    // setMood: setMood
   };
 
   return (
@@ -29,5 +32,6 @@ const ContextProvider = ({ children }) => {
     </UserContext.Provider>
   );
 }
+
 
 export default ContextProvider;

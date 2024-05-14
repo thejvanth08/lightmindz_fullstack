@@ -23,10 +23,24 @@ app.use(
   })
 );
 app.use(helmet());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("ok");
 });
+
+// to verify the user is logged-in to access the protected routes
+// app.get("/verify-token", (req, res) => {
+//   const token = req.cookies?.token;
+//   if(token) {
+//     console.log("token found");
+//     const payload = jwt.verify(token, jwtSecret);
+//     console.log(payload);
+//     res.json(payload);
+//   } else {
+//     console.log("token not found");
+//   }
+// });
 
 app.post("/signup", async (req, res) => {
   const { email, password } = req.body;
@@ -38,7 +52,7 @@ app.post("/signup", async (req, res) => {
       email: createdUser.email
     };
     // sign new jwt
-    const token = jwt.sign(payload, jwtSecret, {});
+    const token = jwt.sign(payload, jwtSecret, {expiresIn: "1h"});
     res.status(201).cookie("token", token).json({ id: createdUser._id });
   } catch(err) {
     if(err.code === 11000) {
@@ -48,7 +62,16 @@ app.post("/signup", async (req, res) => {
 });
 
 app.post("/add-details", async (req, res) => {
-
+  const details = req.body;
+  try {
+    const payload = await getUserPayload(req);
+    const foundUser = await User.findOne({ _id: payload.id });
+    foundUser.details = details;
+    await foundUser.save();
+    res.status(201).json("details added");
+  } catch(err) {
+    res.status(401).json("unauthorized access"); 
+  }
 });
 
 app.post("/login", async (req, res) => {
@@ -65,7 +88,7 @@ app.post("/login", async (req, res) => {
         id: foundUser._id,
         email: foundUser.email
       };
-      const token = jwt.sign(payload, jwtSecret, {});
+      const token = jwt.sign(payload, jwtSecret, { expiresIn: "1h" });
       res.status(201).cookie("token", token).json({ id: foundUser._id });
     } else {
       res.status(401).json({ error: "wrong password" });
@@ -89,3 +112,22 @@ async function start() {
 }
 
 start();
+
+async function getUserPayload(req) {
+  return new Promise((resolve, reject) => {
+    const token = req.cookies?.token;
+      if(token) {
+        try {
+          const payload = jwt.verify(token, jwtSecret);
+          console.log("valid token");
+          resolve(payload);
+        } catch(err) {
+          reject("invalid token");
+          console.log(err);
+        }
+      } else {
+        reject("token not found");
+        console.log("token not found");
+      }
+  });
+}

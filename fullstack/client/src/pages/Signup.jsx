@@ -1,7 +1,6 @@
 import signupImg from "../assets/images/signup.svg";
 import { Logo, Input } from "../components";
-import { useContext } from "react";
-import { UserContext } from "../UserContext";
+import { useAppData } from "../UserContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -11,7 +10,7 @@ import * as yup from "yup";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { setId } = useContext(UserContext);
+  const { setId } = useAppData();
 
    const schema = yup.object().shape({
      email: yup.string().email().required(),
@@ -33,9 +32,6 @@ const Signup = () => {
       const { data } = await axios.post("/signup", {email, password});
       const userId = data.id;
       setId(userId);
-      // storing it in localstorage, because during routing the component remounts
-      // which results in resetting the state to default value
-      localStorage.setItem("userId", userId);
       navigate("/details-one");
     } catch(err) {
       // if account already exists

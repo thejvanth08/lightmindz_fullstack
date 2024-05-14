@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  details: {
+    type: Object
   }
 });
 // 2nd arg to Schema: { timestamps: true } -> add createdAt prop

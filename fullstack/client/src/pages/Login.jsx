@@ -1,16 +1,15 @@
 import loginImg from "../assets/images/login.svg";
 import {Logo, Input} from "../components";
-import { useContext } from "react";
-import { UserContext } from "../UserContext";
+import axios from "axios";
+import { useAppData } from "../UserContext";
 import {useForm} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setId } = useContext(UserContext);
+  const { setId } = useAppData();
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -24,7 +23,6 @@ const Login = () => {
       const { data } = await axios.post("/login", {email, password});
       const userId = data.id;
       setId(userId);
-      localStorage.setItem("userId", userId);
       navigate("/home");
     } catch (err) {
       console.log(err);
