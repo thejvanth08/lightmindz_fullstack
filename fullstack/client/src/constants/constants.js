@@ -1,3 +1,11 @@
+import homeIcon from "../assets/images/home-icon.png";
+import heartIcon from "../assets/images/heart-icon.png";
+import chatbotIcon from "../assets/images/bot-icon.png";
+import communityIcon from "../assets/images/community-icon.png";
+import insightsIcon from "../assets/images/insights-icon.png";
+
+
+
 export const mentalProblems = [
   "Anxiety",
   "Depression",
@@ -148,5 +156,33 @@ export const test1 = [
       { text: "Always", score: 2 },
       { text: "Often", score: 4 },
     ],
+  },
+];
+
+export const navItems = [
+  {
+    name: "Home",
+    icon: homeIcon,
+    link: "/home"
+  },
+  {
+    name: "Self-care",
+    icon: heartIcon,
+    link: "/self-care"
+  },
+  {
+    name: "Chatbot",
+    icon: chatbotIcon,
+    link: "/chatbot"
+  },
+  {
+    name: "Forum",
+    icon: communityIcon,
+    link: "/forums"
+  },
+  {
+    name: "Insights",
+    icon: insightsIcon,
+    link: "/insights"
   },
 ];

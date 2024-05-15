@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import  { Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Forums, Insights, Profile, NotFound} from "./pages";
+import  { Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound} from "./pages";
 import { createContext } from "react";
 import axios from "axios";
 
@@ -29,6 +29,7 @@ const App = () => {
           <Route path="meditation" element={<Meditation />}></Route>
           <Route path="chill-music" element={<ChillMusic />}></Route>
           <Route path="yoga-trainer" element={<YogaTrainer />}></Route>
+          <Route path="games" element={<Games />}></Route>
         </Route>
         <Route path="forums" element={<Forums />}></Route>
         <Route path="insights" element={<Insights />}></Route>
