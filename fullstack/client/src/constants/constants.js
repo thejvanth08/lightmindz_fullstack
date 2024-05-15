@@ -3,7 +3,10 @@ import heartIcon from "../assets/images/heart-icon.png";
 import chatbotIcon from "../assets/images/bot-icon.png";
 import communityIcon from "../assets/images/community-icon.png";
 import insightsIcon from "../assets/images/insights-icon.png";
-
+import yogaImg from "../assets/images/yoga.png";
+import meditationImg from "../assets/images/meditation.png";
+import musicImg from "../assets/images/music.png";
+import gamesImg from "../assets/images/games.png";
 
 
 export const mentalProblems = [
@@ -186,3 +189,26 @@ export const navItems = [
     link: "/insights"
   },
 ];
+
+export const toolsItems = [
+  {
+    name: "Meditation",
+    link: "/meditation",
+    image: meditationImg
+  },
+  {
+    name: "Yoga Trainer",
+    link: "/yoga-trainer",
+    image: yogaImg
+  },
+  {
+    name: "Chill Music",
+    link: "/chill-music",
+    image: musicImg
+  },
+  {
+    name: "Games",
+    link: "/games",
+    image: gamesImg
+  },
+]

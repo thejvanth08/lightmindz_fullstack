@@ -1,10 +1,12 @@
 import { useAppData } from "./UserContext";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 import { NavBar } from "./components";
 
-const ProtectedRoute = () => {
+const noNavList = ["/chatbot"];
+
+const ProtectedRoute = (props) => {
   const { id } = useAppData();
-  console.log(id);
+ 
   return id ? (
     <div>
       <Outlet />

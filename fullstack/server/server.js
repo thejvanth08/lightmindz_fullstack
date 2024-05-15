@@ -4,6 +4,8 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
+const axios = require("axios");
+const Sentiment = require("sentiment");
 require("dotenv").config();
 
 const User = require("./models/User");
@@ -31,36 +33,35 @@ app.get("/", (req, res) => {
 
 // to verify the user is logged-in to access the protected routes
 // app.get("/verify-token", (req, res) => {
-//   const token = req.cookies?.token;
-//   if(token) {
-//     console.log("token found");
-//     const payload = jwt.verify(token, jwtSecret);
-//     console.log(payload);
-//     res.json(payload);
-//   } else {
-//     console.log("token not found");
-//   }
-// });
-
-app.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const createdUser = await User.create({email, password});
-    console.log("created user in db");
-    const payload = {
-      id: createdUser._id,
-      email: createdUser.email
-    };
-    // sign new jwt
-    const token = jwt.sign(payload, jwtSecret, {expiresIn: "1h"});
-    res.status(201).cookie("token", token).json({ id: createdUser._id });
-  } catch(err) {
-    if(err.code === 11000) {
-      res.status(422).json({ error: "Account with this email already exists"});
-    }
-  }
-});
-
+  //   const token = req.cookies?.token;
+  //   if(token) {
+    //     console.log("token found");
+    //     const payload = jwt.verify(token, jwtSecret);
+    //     console.log(payload);
+    //     res.json(payload);
+    //   } else {
+      //     console.log("token not found");
+      //   }
+      // });
+      app.post("/signup", async (req, res) => {
+        const { email, password } = req.body;
+        try {
+          const createdUser = await User.create({email, password});
+          console.log("created user in db");
+          const payload = {
+            id: createdUser._id,
+            email: createdUser.email
+          };
+          // sign new jwt
+          const token = jwt.sign(payload, jwtSecret, {expiresIn: "1h"});
+          res.status(201).cookie("token", token).json({ id: createdUser._id });
+        } catch(err) {
+          if(err.code === 11000) {
+            res.status(422).json({ error: "Account with this email already exists"});
+          }
+        }
+      });
+      
 app.post("/add-details", async (req, res) => {
   const details = req.body;
   try {
@@ -79,7 +80,7 @@ app.post("/login", async (req, res) => {
   try {
     // find => results in array, findOne -> single object
     const foundUser = await User.findOne({email: email});
-
+    
     // check provided password with original password
     console.log("check: ", password, foundUser.password);
     if(foundUser.password == password) {
@@ -96,6 +97,32 @@ app.post("/login", async (req, res) => {
   } catch(err) {
     console.log(err);
     res.status(404).json({ error: "user not found" });
+  }
+});
+
+const sentiment = new Sentiment();
+app.post("/rasa/message", async (req, res) => {
+  // user messages
+  let userChat = [];
+  
+  const { message } = req.body;
+  const sentimentResult = sentiment.analyze(message);
+  // add to user chat
+  userChat.push({
+    message,
+    sentimentResult
+  });
+  
+  try {
+    const { data } = await axios.post("http://127.0.0.1:5005/webhooks/rest/webhook", {
+      message: message,
+    });
+    // rasa response
+    const rasaRes = data[0].text;
+    res.status(201).json({ response: rasaRes })
+  } catch(err) {
+    res.status(400).json("error happened");
+    console.log(err);
   }
 });
 

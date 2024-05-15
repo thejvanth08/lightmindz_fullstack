@@ -4,5 +4,6 @@ import Problem from "./Problem";
 import Profile from "./Profile";
 import Mood from "./Mood";
 import NavBar from "./NavBar";
+import Back from "./Back";
 
-export {Logo, Input, Problem, Profile, Mood, NavBar};
+export {Logo, Input, Problem, Profile, Mood, NavBar, Back};
