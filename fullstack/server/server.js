@@ -100,19 +100,9 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const sentiment = new Sentiment();
 app.post("/rasa/message", async (req, res) => {
-  // user messages
-  let userChat = [];
-  
   const { message } = req.body;
-  const sentimentResult = sentiment.analyze(message);
-  // add to user chat
-  userChat.push({
-    message,
-    sentimentResult
-  });
-  
+
   try {
     const { data } = await axios.post("http://127.0.0.1:5005/webhooks/rest/webhook", {
       message: message,
@@ -124,6 +114,29 @@ app.post("/rasa/message", async (req, res) => {
     res.status(400).json("error happened");
     console.log(err);
   }
+});
+
+const sentiment = new Sentiment();
+app.post("/rasa/upload-chat", async (req, res) => {
+  // verify the req
+  try {
+    const payload = await getUserPayload(req);
+    const foundUser = await User.findOne({ _id: payload.id });
+     const { userChat } = req.body;
+     const userChatWithSentiment = userChat.map((msg, index) => {
+       const { score, calculation, words, positive, negative } =
+         sentiment.analyze(msg);
+       return {
+         message: msg,
+         sentiment: { score, calculation, words, positive, negative },
+       };
+     });
+     
+  } catch (err) {
+    console.log(err);
+    res.status(400).json("cannot upload chat");
+  }
+
 });
 
 async function start() {
