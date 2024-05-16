@@ -211,4 +211,67 @@ export const toolsItems = [
     link: "/games",
     image: gamesImg
   },
-]
+];
+
+export const videos = [
+  {
+    title:
+      "Understanding Anxiety - A Psychiatrist Explains Symptoms, Medication Options and Therapy",
+    link: "https://www.youtube.com/embed/A9wwZmBGKiU?si=b46KhRFyeT-3o1D8",
+  },
+  {
+    title: "Managing depression without medication",
+    link: "https://www.youtube.com/embed/0uf4hVy0OCs?si=qEgqrDeX0TDSTACm",
+  },
+  {
+    title: "How lack of sleep affects health and tips for a good night's rest",
+    link: "https://www.youtube.com/embed/KpyoDML2eUI?si=zOS04mHfrjaAehL0",
+  },
+  {
+    title: "Overuse of social media can impact mental health",
+    link: "https://www.youtube.com/embed/KpyoDML2eUI?si=zOS04mHfrjaAehL0",
+  },
+  {
+    title: "Stop doubting yourself and go after what you really want",
+    link: "https://www.youtube.com/embed/DmeOX5Zu36M?si=CGosYaqMhtTcFJDK",
+  },
+  {
+    title: "Breaking the Stigma and Shame of Mental Illness",
+    link: "https://www.youtube.com/embed/OsRF8xGgbPA?si=Mqha3iyxW_IUfzTg",
+  },
+  {
+    title: "Mental health tips from therapists",
+    link: "https://www.youtube.com/embed/gwmv_KGdceA?si=BjeSic9ntDKRwxWW",
+  },
+];
+
+export const articles = [
+  {
+    title: "Understanding Anxiety Disorders",
+    link: "https://www.medicalnewstoday.com/articles/pathological-anxiety-definition-causes-and-symptoms",
+  },
+  {
+    title: "Recognizing and Managing Depression",
+    link: "https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/depression-treatment-and-management",
+  },
+  {
+    title: "The Importance of Sleep in Mental Health",
+    link: "https://www.sleepfoundation.org/mental-health",
+  },
+  {
+    title: "Mindfulness Techniques for Stress Reduction",
+    link: "https://www.mindful.org/how-to-manage-stress-with-mindfulness-and-meditation/",
+  },
+  {
+    title: "The Connection Between Physical Health and Mental Health",
+    link: "https://www.verywellmind.com/the-mental-and-physical-health-connection-7255857",
+  },
+  {
+    title: "The Impact of Social Media on Mental Health",
+    link: "https://www.helpguide.org/articles/mental-health/social-media-and-mental-health.htm#:~:text=Since%20it%27s%20a%20relatively%20new,harm%2C%20and%20even%20suicidal%20thoughts.",
+  },
+  {
+    title: "Overcoming Self-Doubt",
+    link: "https://www.tonyrobbins.com/mental-health/how-to-overcome-self-doubt/",
+  },
+];

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import  { Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound} from "./pages";
+import  { Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound} from "./pages";
 import { createContext } from "react";
 import axios from "axios";
 
@@ -13,6 +13,7 @@ const App = () => {
 
   return (
     <Routes>
+      <Route path="/" element={<Landing />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup />}></Route>
       <Route path="/" element={<ProtectedRoute />}>

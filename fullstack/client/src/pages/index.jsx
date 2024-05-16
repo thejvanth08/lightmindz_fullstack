@@ -1,3 +1,4 @@
+import Landing from "./Landing";
 import Login from "./Login";
 import Signup from "./Signup";
 import DetailsOne from "./DetailsOne";
@@ -16,4 +17,4 @@ import Insights from "./Insights";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 
-export {Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound};
+export {Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound};
