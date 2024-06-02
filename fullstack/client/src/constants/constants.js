@@ -24,29 +24,29 @@ export const mentalProblems = [
 
 export const moods = [
   {
-    name: "happy 1",
+    name: "happy",
     emoji: "😄",
     value: 5,
   },
   {
-    name: "happy 2",
-    emoji: "😄",
-    value: 5,
+    name: "good",
+    emoji: "😊",
+    value: 4,
   },
   {
-    name: "happy 3",
-    emoji: "😄",
-    value: 5,
+    name: "okay",
+    emoji: "😑",
+    value: 3,
   },
   {
-    name: "happy 4",
-    emoji: "😄",
-    value: 5,
+    name: "bore",
+    emoji: "😕",
+    value: 2,
   },
   {
-    name: "happy 5",
-    emoji: "😄",
-    value: 5,
+    name: "bad",
+    emoji: "😖",
+    value: 1,
   },
 ];
 

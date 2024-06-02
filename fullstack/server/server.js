@@ -17,6 +17,15 @@ const app = express();
 const dbUrl = process.env.MONGO_URL;
 const jwtSecret = process.env.JWT_SECRET;
 
+// warning in client
+app.use((req, res, next) => {
+  res.setHeader(
+    "Permissions-Policy",
+    "accelerometer=(), autoplay=(), clipboard-write=(), encrypted-media=(), gyroscope=(), picture-in-picture=(), web-share=()"
+  );
+  next();
+});
+
 app.use(express.json());
 app.use(
   cors({
@@ -131,6 +140,7 @@ app.post("/rasa/upload-chat", async (req, res) => {
          sentiment: { score, calculation, words, positive, negative },
        };
      });
+     console.log(userChatWithSentiment);
      
   } catch (err) {
     console.log(err);

@@ -12,7 +12,7 @@ const Mood = ({ name, emoji, selectedMood, setSelectedMood }) => {
   return (
     <div
       onClick={handleSelect}
-      className={`flex flex-col justify-center items-center gap-y-0.5 px-2 py-5 mx-0.5 mt-2 rounded-full capitalize ${
+      className={`w-20 flex flex-col justify-center items-center gap-y-0.5 px-2 py-5 mx-0.5 mt-2 rounded-full capitalize ${
         selectedMood === name ? "bg-violet-500 text-white" : "bg-violet-100"
       }`}
     >

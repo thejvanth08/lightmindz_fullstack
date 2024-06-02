@@ -8,9 +8,11 @@ const ProtectedRoute = (props) => {
   const { id } = useAppData();
  
   return id ? (
-    <div>
+    <div className="lg:flex lg:relative">
+      <aside className="w-20">
+        <NavBar/>
+      </aside>
       <Outlet />
-      <NavBar/>
     </div>
   ) : (
     <Navigate to="/login" />

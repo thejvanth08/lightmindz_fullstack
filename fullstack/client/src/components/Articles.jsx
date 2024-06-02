@@ -5,8 +5,12 @@ const Articles = () => {
   return (
     <div className="mt-4">
       {articles.map(({ title, link }) => (
-        <article className="bg-violet-100 p-3 mb-3 rounded-lg cursor-pointer">
-          <a href={link} target="_blank" className="flex justify-left items-center gap-x-3">
+        <article className="bg-violet-100 sm2:w-[460px] p-3 mb-3 mx-auto rounded-lg cursor-pointer">
+          <a
+            href={link}
+            target="_blank"
+            className="flex justify-left items-center gap-x-3"
+          >
             <div className="inline-block bg-violet-500 p-2 rounded-full flex-shrink-0">
               <img src={articleIcon} className="w-8 h-8" />
             </div>

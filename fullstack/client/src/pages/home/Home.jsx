@@ -10,7 +10,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="px-2.5 py-2 pb-20">
+    <div className="px-2.5 py-2 pb-20 w-full">
       <div className="flex justify-between items-center">
         <Logo></Logo>
         <Profile></Profile>
@@ -21,7 +21,7 @@ const Home = () => {
           <h2 className="text-lg font-semibold text-center">
             How was your mood today?
           </h2>
-          <div className="flex justify-evenly items-center flex-wrap mt-2">
+          <div className="flex max-w-[600px] justify-evenly items-center flex-wrap mt-2 mx-auto">
             {moods.map((mood, index) => (
               <Mood
                 key={index}
@@ -37,7 +37,7 @@ const Home = () => {
           <h2 className="text-lg font-semibold text-center">
             Take your Assessment Test
           </h2>
-          <div className="flex overflow-x-auto mt-2">
+          <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto">
             <div className="flex-shrink-0 bg-violet-100 w-52 p-4 mr-4 rounded-lg">
               <p className="font-semibold">Test 1</p>
               <p>Questions: 10</p>

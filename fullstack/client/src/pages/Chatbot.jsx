@@ -12,7 +12,7 @@ const Chatbot = () => {
   const handleEnd = async () => {
     const userChat = conversation.filter((chat) => chat.role === "user").map((chat) => chat.message);
     console.log("conversation ended");
-    console.log(userChat);
+    setConversation([]);
     try {
       const { data } = await axios.post("/rasa/upload-chat", {
         userChat: userChat
@@ -65,7 +65,7 @@ const Chatbot = () => {
           <img className="w-7 h-7" src={historyIcon} />
         </div>
       </div>
-      <div className="bg-orange-200 max-w-[600px] h-auto mx-auto overflow-y-auto">
+      <div className="max-w-[600px] h-auto mx-auto overflow-y-auto pb-12">
         <div className="">
           <div className="w-full mt-8">
             {conversation.length > 0 &&
