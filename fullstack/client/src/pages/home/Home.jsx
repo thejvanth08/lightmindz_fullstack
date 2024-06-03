@@ -10,18 +10,20 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="px-2.5 py-2 pb-20 w-full">
+    <div className="w-full">
       <div className="flex justify-between items-center">
         <Logo></Logo>
         <Profile></Profile>
       </div>
       <div className="mt-4">
-        <h1 className="text-xl font-bold text-center">Welcome back, thomas!</h1>
-        <section className="mt-3">
-          <h2 className="text-lg font-semibold text-center">
+        <h1 className="text-xl font-bold text-center lg:text-3xl">
+          Welcome back, thomas!
+        </h1>
+        <section className="mt-3 lg:mt-8">
+          <h2 className="text-lg font-semibold text-center lg:text-xl">
             How was your mood today?
           </h2>
-          <div className="flex max-w-[600px] justify-evenly items-center flex-wrap mt-2 mx-auto">
+          <div className="flex max-w-[600px] justify-evenly items-center flex-wrap mt-2 mx-auto lg:mt-4">
             {moods.map((mood, index) => (
               <Mood
                 key={index}
@@ -33,11 +35,11 @@ const Home = () => {
             ))}
           </div>
         </section>
-        <section className="mt-3">
-          <h2 className="text-lg font-semibold text-center">
+        <section className="mt-3 lg:mt-8">
+          <h2 className="text-lg font-semibold text-center lg:text-xl">
             Take your Assessment Test
           </h2>
-          <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto">
+          <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto lg:mt-4">
             <div className="flex-shrink-0 bg-violet-100 w-52 p-4 mr-4 rounded-lg">
               <p className="font-semibold">Test 1</p>
               <p>Questions: 10</p>
@@ -62,11 +64,11 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="mt-3">
-          <h2 className="text-lg font-semibold text-center">
+        <section className="mt-3 lg:mt-8">
+          <h2 className="text-lg font-semibold text-center lg:text-xl">
             Finish up today's story
           </h2>
-          <div className="w-72 bg-violet-400 flex flex-col items-center p-4 mx-auto mt-2 rounded-lg">
+          <div className="w-72 bg-violet-400 flex flex-col items-center p-4 mx-auto mt-2 rounded-lg lg:mt-4">
             <img src={diaryIcon} alt="" />
             <button
               onClick={() => {
@@ -79,11 +81,11 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="mt-3">
-          <h2 className="text-lg font-semibold text-center">
+        <section className="mt-3 lg:mt-8">
+          <h2 className="text-lg font-semibold text-center lg:text-xl">
             Discover more about mental well-being
           </h2>
-          <div className="mt-2 rounded">
+          <div className="mt-2 rounded lg:mt-4">
             <div className="flex justify-center items-center gap-x-8">
               <button
                 onClick={() => {

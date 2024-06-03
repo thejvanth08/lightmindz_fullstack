@@ -9,7 +9,7 @@ export const useAppData = () => {
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [id, setId] = useState(123);
+  const [id, setId] = useState(1);
   // user details
   const [details, setDetails] = useState({});
   // user mood -> happy, sad,..
