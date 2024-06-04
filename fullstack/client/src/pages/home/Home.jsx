@@ -39,7 +39,7 @@ const Home = () => {
           <h2 className="text-lg font-semibold text-center lg:text-xl">
             Take your Assessment Test
           </h2>
-          <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto lg:mt-4">
+          <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto lg:mt-4 scroll-style">
             {
               assessments.map((assessment) => (
                 <TestCard key={assessment.assessmentNo} {...assessment}></TestCard>
@@ -52,8 +52,8 @@ const Home = () => {
           <h2 className="text-lg font-semibold text-center lg:text-xl">
             Finish up today's story
           </h2>
-          <div className="w-72 bg-violet-400 flex flex-col items-center p-4 mx-auto mt-2 rounded-lg lg:mt-4">
-            <img src={diaryIcon} alt="" />
+          <div className="w-72 bg-violet-400 flex flex-col items-center p-4 mx-auto mt-2 rounded-lg lg:w-96 lg:p-6 lg:space-y-5 lg:mt-4">
+            <img src={diaryIcon} alt="" className=""/>
             <button
               onClick={() => {
                 navigate("/home/daily-journal");

@@ -1,4 +1,4 @@
-import { Logo, Back, Message } from "../components";
+import { Logo, Profile, Back, Message } from "../components";
 import historyIcon from "../assets/images/history-icon.png";
 import sendIcon from "../assets/images/send-icon.png";
 import { useState, useRef } from "react";
@@ -59,11 +59,10 @@ const Chatbot = () => {
   return (
     <div className="px-2.5 py-2 pb-20">
       <div className="flex justify-between items-center overflow-y-hidden">
-        <Back></Back>
         <Logo></Logo>
-        <div>
-          <img className="w-7 h-7" src={historyIcon} />
-        </div>
+        <Profile></Profile>
+        {/* <Back></Back>
+        <Logo></Logo> */}
       </div>
       <div className="max-w-[600px] h-auto mx-auto overflow-y-auto pb-12">
         <div className="">

@@ -15,7 +15,7 @@ const Journal = () => {
           <textarea
             name=""
             placeholder="Tell us about your day..."
-            className="bg-violet-100 w-full h-[400px] p-3 rounded-lg outline-none lg:h-[450px] lg:p-6"
+            className="resize-none bg-violet-100 w-full h-[400px] p-3 rounded-lg outline-none lg:h-[450px] lg:p-6"
           ></textarea>
           <button
             type="submit"
