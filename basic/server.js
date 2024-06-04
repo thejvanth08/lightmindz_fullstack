@@ -3,6 +3,7 @@ const cors = require("cors");
 const axios = require("axios");
 const Sentiment = require("sentiment");
 const mongoose = require("mongoose");
+const { afinn165 } = require("afinn165");
 require("dotenv").config();
 
 const app = express();

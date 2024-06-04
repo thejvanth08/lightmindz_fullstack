@@ -1,5 +1,5 @@
-import { Logo, Profile, Mood, Videos, Articles } from "../../components";
-import { moods } from "../../constants/constants";
+import { Logo, Profile, Mood, Videos, Articles, TestCard } from "../../components";
+import { moods, assessments } from "../../constants/constants";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import diaryIcon from "../../assets/images/diary-icon.png";
@@ -10,7 +10,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full">
+    <div className="w-full pb-20">
       <div className="flex justify-between items-center">
         <Logo></Logo>
         <Profile></Profile>
@@ -40,27 +40,11 @@ const Home = () => {
             Take your Assessment Test
           </h2>
           <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto lg:mt-4">
-            <div className="flex-shrink-0 bg-violet-100 w-52 p-4 mr-4 rounded-lg">
-              <p className="font-semibold">Test 1</p>
-              <p>Questions: 10</p>
-              <button className="bg-violet-500 text-white px-3 py-1 rounded-lg mt-2">
-                Take Test
-              </button>
-            </div>
-            <div className="flex-shrink-0 bg-violet-100 w-52 p-4 mr-4 rounded-lg">
-              <p className="font-semibold">Test 1</p>
-              <p>Questions: 10</p>
-              <button className="bg-violet-500 text-white px-3 py-1 rounded-lg mt-2">
-                Take Test
-              </button>
-            </div>
-            <div className="flex-shrink-0 bg-violet-100 w-52 p-4 mr-4 rounded-lg">
-              <p className="font-semibold">Test 1</p>
-              <p>Questions: 10</p>
-              <button className="bg-violet-500 text-white px-3 py-1 rounded-lg mt-2">
-                Take Test
-              </button>
-            </div>
+            {
+              assessments.map((assessment) => (
+                <TestCard key={assessment.assessmentNo} {...assessment}></TestCard>
+              ))
+            }
           </div>
         </section>
 

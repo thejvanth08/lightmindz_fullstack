@@ -51,113 +51,350 @@ export const moods = [
 ];
 
 // assessment test
-export const test1 = [
+export const assessments = [
   {
-    question:
-      "How often have you felt down, depressed, or hopeless in the past two weeks?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Sometimes", score: 6 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
+    assessmentNo: 1,
+    noOfQuestions: 10,
+    questions: [
+      {
+        question:
+          "How often have you felt down, depressed, or hopeless in the past two weeks?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience overwhelming anxiety or worry?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Often", score: 4 },
+          { text: "Always", score: 2 },
+          { text: "Sometimes", score: 6 },
+        ],
+      },
+      {
+        question:
+          "How often do you struggle with sleeping difficulties, such as insomnia or disturbed sleep?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+          { text: "Never", score: 10 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you find it hard to concentrate or make decisions?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you feel overwhelmed or unable to cope with daily tasks and responsibilities?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience sudden changes in mood or emotional instability?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you engage in behaviors that negatively impact your physical health, such as overeating or substance abuse?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you feel disconnected from others or experience loneliness?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience physical symptoms without a clear medical cause, such as headaches or stomachaches?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question: "How often do you have thoughts of self-harm or suicide?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
     ],
   },
   {
-    question: "How frequently do you experience overwhelming anxiety or worry?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Never", score: 10 },
-      { text: "Often", score: 4 },
-      { text: "Always", score: 2 },
-      { text: "Sometimes", score: 6 },
+    assessmentNo: 2,
+    noOfQuestions: 10,
+    questions: [
+      {
+        question:
+          "How often have you felt down, depressed, or hopeless in the past two weeks?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience overwhelming anxiety or worry?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Often", score: 4 },
+          { text: "Always", score: 2 },
+          { text: "Sometimes", score: 6 },
+        ],
+      },
+      {
+        question:
+          "How often do you struggle with sleeping difficulties, such as insomnia or disturbed sleep?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+          { text: "Never", score: 10 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you find it hard to concentrate or make decisions?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you feel overwhelmed or unable to cope with daily tasks and responsibilities?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience sudden changes in mood or emotional instability?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you engage in behaviors that negatively impact your physical health, such as overeating or substance abuse?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you feel disconnected from others or experience loneliness?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience physical symptoms without a clear medical cause, such as headaches or stomachaches?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question: "How often do you have thoughts of self-harm or suicide?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
     ],
   },
   {
-    question:
-      "How often do you struggle with sleeping difficulties, such as insomnia or disturbed sleep?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Sometimes", score: 6 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-      { text: "Never", score: 10 },
-    ],
-  },
-  {
-    question:
-      "How frequently do you find it hard to concentrate or make decisions?",
-    options: [
-      { text: "Sometimes", score: 6 },
-      { text: "Rarely", score: 8 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-    ],
-  },
-  {
-    question:
-      "How often do you feel overwhelmed or unable to cope with daily tasks and responsibilities?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Sometimes", score: 6 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-    ],
-  },
-  {
-    question:
-      "How frequently do you experience sudden changes in mood or emotional instability?",
-    options: [
-      { text: "Sometimes", score: 6 },
-      { text: "Rarely", score: 8 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-    ],
-  },
-  {
-    question:
-      "How often do you engage in behaviors that negatively impact your physical health, such as overeating or substance abuse?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Sometimes", score: 6 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-    ],
-  },
-  {
-    question:
-      "How often do you feel disconnected from others or experience loneliness?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Sometimes", score: 6 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-    ],
-  },
-  {
-    question:
-      "How frequently do you experience physical symptoms without a clear medical cause, such as headaches or stomachaches?",
-    options: [
-      { text: "Rarely", score: 8 },
-      { text: "Sometimes", score: 6 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
-    ],
-  },
-  {
-    question: "How often do you have thoughts of self-harm or suicide?",
-    options: [
-      { text: "Sometimes", score: 6 },
-      { text: "Rarely", score: 8 },
-      { text: "Never", score: 10 },
-      { text: "Always", score: 2 },
-      { text: "Often", score: 4 },
+    assessmentNo: 3,
+    noOfQuestions: 10,
+    questions: [
+      {
+        question:
+          "How often have you felt down, depressed, or hopeless in the past two weeks?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience overwhelming anxiety or worry?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Often", score: 4 },
+          { text: "Always", score: 2 },
+          { text: "Sometimes", score: 6 },
+        ],
+      },
+      {
+        question:
+          "How often do you struggle with sleeping difficulties, such as insomnia or disturbed sleep?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+          { text: "Never", score: 10 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you find it hard to concentrate or make decisions?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you feel overwhelmed or unable to cope with daily tasks and responsibilities?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience sudden changes in mood or emotional instability?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you engage in behaviors that negatively impact your physical health, such as overeating or substance abuse?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How often do you feel disconnected from others or experience loneliness?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question:
+          "How frequently do you experience physical symptoms without a clear medical cause, such as headaches or stomachaches?",
+        options: [
+          { text: "Rarely", score: 8 },
+          { text: "Sometimes", score: 6 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
+      {
+        question: "How often do you have thoughts of self-harm or suicide?",
+        options: [
+          { text: "Sometimes", score: 6 },
+          { text: "Rarely", score: 8 },
+          { text: "Never", score: 10 },
+          { text: "Always", score: 2 },
+          { text: "Often", score: 4 },
+        ],
+      },
     ],
   },
 ];

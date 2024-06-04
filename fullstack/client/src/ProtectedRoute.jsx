@@ -1,16 +1,46 @@
 import { useAppData } from "./UserContext";
-import { Outlet, Navigate, useLocation } from "react-router-dom";
+import { Outlet, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { NavBar } from "./components";
-
-const noNavList = ["/chatbot"];
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 const ProtectedRoute = (props) => {
+  const navigate = useNavigate();
+
   const location = useLocation();
   const noNavBarList = ["/details-one", "/details-two"];
 
   const hideNavBar = noNavBarList.includes(location.pathname); 
 
-  const { id } = useAppData();
+  const { id, setId } = useAppData();
+
+  const [cookies, setCookie, removeCookie] = useCookies([]);
+  useEffect(() => {
+    if (cookies["token"]) {
+      const token = cookies["token"].trim();
+      // verify the jwt and set the id
+      axios
+        .post("/verify-user", { token: token })
+        .then(({ data }) => {
+          if (data.status == "success") {
+            setId(data.payload.id);
+            // if there is any state stored in the location
+            // it will be useful in test page, the state must be sent while refreshing the page
+            if(location.state) {
+              navigate(location.pathname, {
+                state: location.state
+              });
+            } else {
+              navigate(location.pathname);
+            }
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);   
  
   return id ? (
     <div className="lg:flex lg:relative">
@@ -20,7 +50,7 @@ const ProtectedRoute = (props) => {
           <NavBar />
         </aside>
       }
-      <div className="w-full px-2 pt-2 pb-20 lg:pt-4 lg:px-4">
+      <div className="w-full px-2 pt-2 lg:pt-4 lg:px-4">
         <Outlet />
       </div>
     </div>

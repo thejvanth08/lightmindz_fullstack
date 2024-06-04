@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({});
 
@@ -8,8 +10,10 @@ export const useAppData = () => {
 };
 
 const ContextProvider = ({ children }) => {
+  const navigate = useNavigate();
+  
   const [user, setUser] = useState(null);
-  const [id, setId] = useState(1);
+  const [id, setId] = useState(null);
   // user details
   const [details, setDetails] = useState({});
   // user mood -> happy, sad,..
@@ -25,6 +29,8 @@ const ContextProvider = ({ children }) => {
     // mood: mood,
     // setMood: setMood
   };
+
+
 
   return (
     <UserContext.Provider value={data}>

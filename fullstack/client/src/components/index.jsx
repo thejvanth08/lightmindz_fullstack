@@ -8,5 +8,5 @@ import Back from "./Back";
 import Message from "./Message"
 import Videos from "./Videos";
 import Articles from "./Articles";
-
-export {Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles};
+import TestCard from "./TestCard";
+export {Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard};
