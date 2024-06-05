@@ -10,7 +10,7 @@ const Tool = ({ name, link, image }) => {
   return (
     <div
       onClick={handleClick} 
-      className="max-w-[600px] bg-violet-100 px-2 py-1 mb-2 mx-auto rounded-lg flex justify-evenly items-center lg:shrink-0 lg:basis-[500px]">
+      className="max-w-[600px] bg-violet-100 px-2 py-1 mb-2 mx-auto rounded-lg flex justify-evenly items-center cursor-pointer lg:shrink-0 lg:basis-[500px]">
       <p className="text-xl font-semibold">
         { name }
       </p>

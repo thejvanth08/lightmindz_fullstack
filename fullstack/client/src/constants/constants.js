@@ -7,6 +7,7 @@ import yogaImg from "../assets/images/yoga.png";
 import meditationImg from "../assets/images/meditation.png";
 import musicImg from "../assets/images/music.png";
 import gamesImg from "../assets/images/games.png";
+import meditationTrackOne from "../assets/audio/meditation/ten-mins-meditation.mp3";
 
 
 export const mentalProblems = [
@@ -511,4 +512,19 @@ export const articles = [
     title: "Overcoming Self-Doubt",
     link: "https://www.tonyrobbins.com/mental-health/how-to-overcome-self-doubt/",
   },
+];
+
+export const meditationTracks = [
+  {
+    time: "10 mins",
+    src: meditationTrackOne
+  },
+  {
+    time: "20 mins",
+    src: meditationTrackOne
+  },
+  {
+    time: "30 mins",
+    src: meditationTrackOne
+  }
 ];

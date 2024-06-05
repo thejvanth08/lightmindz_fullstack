@@ -1,7 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { navItems } from "../constants/constants";
+import { useAppData } from "../UserContext";
+import { useCookies } from "react-cookie";
 
 const NavBar = () => {
+  const { setId } = useAppData();
+
+  const [cookies, setCookie, removeCookie] = useCookies();
+
+  const handleLogout = () => {
+    removeCookie("token");
+    setId(null);
+  }
+
   return (
     <nav className="fixed bottom-0 z-50 w-full h-auto bg-violet-500 py-2.5 flex justify-evenly items-center lg:fixed lg:block lg:w-52 lg:h-screen lg:pt-5 lg:px-5">
       {navItems.map(({ name, link, icon }, index) => (
@@ -12,6 +23,7 @@ const NavBar = () => {
           </NavLink>
         </div>
       ))}
+      <button onClick={handleLogout} type="button" className="hidden lg:inline-block text-white">Logout</button>
     </nav>
   );
 }
