@@ -7,7 +7,8 @@ import yogaImg from "../assets/images/yoga.png";
 import meditationImg from "../assets/images/meditation.png";
 import musicImg from "../assets/images/music.png";
 import gamesImg from "../assets/images/games.png";
-import meditationTrackOne from "../assets/audio/meditation/ten-mins-meditation.mp3";
+import meditationTrackOne from "../assets/audio/meditation/10-meditation.mp3";
+import meditationTrackTwo from "../assets/audio/meditation/20-meditation.mp3";
 
 
 export const mentalProblems = [
@@ -521,7 +522,7 @@ export const meditationTracks = [
   },
   {
     time: "20 mins",
-    src: meditationTrackOne
+    src: meditationTrackTwo
   },
   {
     time: "30 mins",

@@ -8,10 +8,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-/* 
-body::-webkit-scrollbar {
-  width: 10px;
-} */
 
 .scroll-style::-webkit-scrollbar {
   height: 6px;
@@ -26,4 +22,42 @@ body::-webkit-scrollbar {
 .scroll-style::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: #8b5cf6;
+}
+
+/* meditation audio element styles */
+.custom-audio-player {
+  @apply bg-violet-200 rounded-lg shadow-lg;
+}
+
+.custom-audio-player .rhap_container {
+  @apply bg-violet-400;
+}
+
+.custom-audio-player .rhap_progress-bar {
+  @apply bg-violet-400;
+}
+
+.custom-audio-player .rhap_progress-filled {
+  @apply bg-violet-400;
+}
+
+.custom-audio-player .rhap_progress-indicator {
+  @apply bg-violet-500;
+}
+
+.custom-audio-player .rhap_download-progress {
+  @apply bg-violet-400;
+}
+
+.custom-audio-player .rhap_main-controls button,
+.custom-audio-player .rhap_volume-controls button {
+  @apply text-violet-400;
+}
+
+.custom-audio-player .rhap_volume-bar {
+  @apply bg-violet-400;
+}
+
+.custom-audio-player .rhap_volume-indicator {
+  @apply bg-violet-500;
 }
