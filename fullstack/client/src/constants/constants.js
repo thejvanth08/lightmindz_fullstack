@@ -9,7 +9,7 @@ import musicImg from "../assets/images/music.png";
 import gamesImg from "../assets/images/games.png";
 import meditationTrackOne from "../assets/audio/meditation/10-meditation.mp3";
 import meditationTrackTwo from "../assets/audio/meditation/20-meditation.mp3";
-
+import natureOne from "../assets/audio/chill-music/nature/nature-1.mp3";
 
 export const mentalProblems = [
   "Anxiety",
@@ -436,14 +436,14 @@ export const toolsItems = [
     image: meditationImg
   },
   {
-    name: "Yoga Trainer",
-    link: "/yoga-trainer",
-    image: yogaImg
-  },
-  {
     name: "Chill Music",
     link: "/chill-music",
     image: musicImg
+  },
+  {
+    name: "Yoga Trainer",
+    link: "/yoga-trainer",
+    image: yogaImg
   },
   {
     name: "Games",
@@ -529,3 +529,26 @@ export const meditationTracks = [
     src: meditationTrackOne
   }
 ];
+
+export const musicTracks = [
+  {
+    category: "nature",
+    title: "Nature 1",
+    track: natureOne
+  },
+  {
+    category: "nature",
+    title: "Nature 2",
+    track: natureOne
+  },
+  {
+    category: "instrumental",
+    title: "Instrumental 1",
+    track: natureOne
+  },
+  {
+    category: "ambient",
+    title: "Ambient 1",
+    track: natureOne
+  },
+]

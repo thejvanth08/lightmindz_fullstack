@@ -9,4 +9,5 @@ import Message from "./Message"
 import Videos from "./Videos";
 import Articles from "./Articles";
 import TestCard from "./TestCard";
-export {Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard};
+import MusicPlayer from "./MusicPlayer";
+export {Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard, MusicPlayer};
