@@ -51,8 +51,8 @@ const ChillMusic = () => {
               >
                 <p>{track.title}</p>
                 <div
-                  onClick={() => { handlePlay(track.track) }}
-                  className="bg-violet-500 p-1.5 rounded-full"
+                  onClick={() => { handlePlay(track) }}
+                  className="bg-violet-500 p-1.5 rounded-full cursor-pointer"
                 >
                   <img src={playIcon} alt="" className="w-8 h-8" />
                 </div>
@@ -60,7 +60,7 @@ const ChillMusic = () => {
             ))}
           </div>
 
-          { playingTrack && <MusicPlayer playingTrack={playingTrack} /> }
+          { playingTrack && <MusicPlayer {...playingTrack} setPlayingTrack={setPlayingTrack} /> }
         </div>
       </section>
     </div>

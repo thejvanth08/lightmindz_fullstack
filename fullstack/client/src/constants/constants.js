@@ -534,21 +534,21 @@ export const musicTracks = [
   {
     category: "nature",
     title: "Nature 1",
-    track: natureOne
+    src: natureOne
   },
   {
     category: "nature",
     title: "Nature 2",
-    track: natureOne
+    src: natureOne
   },
   {
     category: "instrumental",
     title: "Instrumental 1",
-    track: natureOne
+    src: natureOne
   },
   {
     category: "ambient",
     title: "Ambient 1",
-    track: natureOne
+    src: natureOne
   },
 ]

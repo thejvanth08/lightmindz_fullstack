@@ -61,3 +61,45 @@ input::-webkit-inner-spin-button {
 .custom-audio-player .rhap_volume-indicator {
   @apply bg-violet-500;
 }
+
+/* music player audio element styles */
+
+.custom-audio-player-two .rhap_time {
+  @apply text-white;
+}
+
+.custom-audio-player-two {
+  @apply bg-[#ddd6fe0c] rounded-lg shadow-lg;
+}
+
+.custom-audio-player-two .rhap_container {
+  @apply bg-violet-300;
+}
+
+.custom-audio-player-two .rhap_progress-bar {
+  @apply bg-violet-300;
+}
+
+.custom-audio-player-two .rhap_progress-filled {
+  @apply bg-violet-300;
+}
+
+.custom-audio-player-two .rhap_progress-indicator {
+  @apply bg-violet-400;
+}
+
+.custom-audio-player-two .rhap_download-progress {
+  @apply bg-violet-300;
+}
+
+.custom-audio-player-two .rhap_main-controls button {
+  @apply text-violet-300;
+}
+
+.custom-audio-player-two .rhap_volume-bar {
+  @apply bg-violet-300;
+}
+
+.custom-audio-player-two .rhap_volume-indicator {
+  @apply bg-violet-400;
+}
