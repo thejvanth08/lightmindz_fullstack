@@ -36,7 +36,11 @@ const ChillMusic = () => {
               <div
                 onClick={() => handleChangeCategory(category)}
                 key={category}
-                className="bg-violet-400 text-white text-lg font-semibold p-3 capitalize rounded-lg cursor-pointer lg:px-6 lg:py-4"
+                className={`text-lg font-semibold p-3 rounded-lg cursor-pointer capitalize ${
+                  category == tracks[0]?.category
+                    ? "bg-violet-400 text-white"
+                    : "bg-violet-100 text-violet-500"
+                } lg:px-6 lg:py-4`}
               >
                 {category}
               </div>
@@ -51,7 +55,9 @@ const ChillMusic = () => {
               >
                 <p>{track.title}</p>
                 <div
-                  onClick={() => { handlePlay(track) }}
+                  onClick={() => {
+                    handlePlay(track);
+                  }}
                   className="bg-violet-500 p-1.5 rounded-full cursor-pointer"
                 >
                   <img src={playIcon} alt="" className="w-8 h-8" />
@@ -60,7 +66,9 @@ const ChillMusic = () => {
             ))}
           </div>
 
-          { playingTrack && <MusicPlayer {...playingTrack} setPlayingTrack={setPlayingTrack} /> }
+          {playingTrack && (
+            <MusicPlayer {...playingTrack} setPlayingTrack={setPlayingTrack} />
+          )}
         </div>
       </section>
     </div>

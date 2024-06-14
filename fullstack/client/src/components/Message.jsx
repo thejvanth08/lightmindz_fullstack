@@ -3,8 +3,8 @@ const Message = ({ role, message }) => {
     <div
       className={`w-2/3 p-2 mb-3.5 rounded-lg ${
         role === "user"
-          ? "bg-violet-100 float-right"
-          : "bg-violet-300 float-left"
+          ? "bg-violet-400 text-white float-right"
+          : "bg-violet-100 float-left"
       }`}
     >
       <p className="text-wrap">{message}</p>

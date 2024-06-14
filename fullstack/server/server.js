@@ -50,7 +50,7 @@ app.post("/signup", async (req, res) => {
       email: createdUser.email
     };
     // sign new jwt
-    const token = jwt.sign(payload, jwtSecret, {expiresIn: "1h"});
+    const token = jwt.sign(payload, jwtSecret, {expiresIn: "7 days"});
     res.status(201).cookie("token", token).json({ id: createdUser._id });
   } catch(err) {
     if(err.code === 11000) {
@@ -94,7 +94,7 @@ app.post("/login", async (req, res) => {
         id: foundUser._id,
         email: foundUser.email
       };
-      const token = jwt.sign(payload, jwtSecret, { expiresIn: "1h" });
+      const token = jwt.sign(payload, jwtSecret, { expiresIn: "7 days" });
       res.status(201).cookie("token", token).json({ id: foundUser._id });
     } else {
       res.status(401).json({ error: "wrong password" });

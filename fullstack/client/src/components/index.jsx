@@ -10,4 +10,5 @@ import Videos from "./Videos";
 import Articles from "./Articles";
 import TestCard from "./TestCard";
 import MusicPlayer from "./MusicPlayer";
-export {Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard, MusicPlayer};
+import ChatInput from "./ChatInput";
+export {Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard, MusicPlayer, ChatInput};
