@@ -32,15 +32,43 @@ const DetailsOne = () => {
         Welcome buddy!👋
         <br /> Enter your Details
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-[400px] mx-auto mt-4">
-        <Input type="text" placeholder="Full Name" {...register("fullname")}></Input>
-        <Input type="number" placeholder="Mobile Number" {...register("mobileNum")}></Input>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="max-w-[400px] mx-auto mt-4"
+      >
+        <Input
+          type="text"
+          placeholder="Full Name"
+          {...register("fullname")}
+        ></Input>
+        <Input
+          type="number"
+          placeholder="Mobile Number"
+          {...register("mobileNum")}
+        ></Input>
         <Input type="number" placeholder="Age" {...register("age")}></Input>
-        <select {...register("gender")} className="bg-violet-200 text-gray-500 font-semibold w-full px-3 py-1.5 my-1.5 outline-none rounded-lg cursor-pointer">
-          <option className="hidden" value="">Gender</option>
-          <option className="text-black" value="Male">Male</option>
+        <select
+          {...register("gender")}
+          className="bg-violet-200 text-gray-500 font-semibold w-full px-3 py-1.5 my-1.5 outline-none rounded-lg cursor-pointer"
+        >
+          <option className="hidden max-w-[400px]" value="">
+            Gender
+          </option>
+          <option className="text-black max-w-[400px]" value="Male">
+            Male
+          </option>
           <option value="Female">Female</option>
         </select>
+        <Input
+          type="tel"
+          placeholder="Emergency Contact Number - 1"
+          {...register("emergencyNo1")}
+        ></Input>
+        <Input
+          type="tel"
+          placeholder="Emergency Contact Number - 2"
+          {...register("emergencyNo2")}
+        ></Input>
         <button
           type="submit"
           className="w-full bg-primary text-white font-bold mt-2 mb-1 rounded-lg py-2 cursor-pointer"
