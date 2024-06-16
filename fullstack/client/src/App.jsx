@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import  { Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound} from "./pages";
+import  { Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Therapist, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound} from "./pages";
 import { createContext } from "react";
 import axios from "axios";
 
@@ -27,6 +27,7 @@ const App = () => {
         <Route path="chatbot" element={<Chatbot />}></Route>
         <Route path="self-care">
           <Route index element={<SelfCare />}></Route>
+          <Route path="therapist" element={<Therapist />}></Route>
           <Route path="meditation" element={<Meditation />}></Route>
           <Route path="chill-music" element={<ChillMusic />}></Route>
           <Route path="yoga-trainer" element={<YogaTrainer />}></Route>

@@ -7,6 +7,7 @@ import Home from "./home/Home";
 import Journal from "./home/Journal";
 import Test from "./home/Test";
 import Chatbot from "./Chatbot";
+import Therapist from "./self-care/Therapist";
 import SelfCare from "./self-care/SelfCare";
 import Meditation from "./self-care/Meditation";
 import ChillMusic from "./self-care/ChillMusic";
@@ -17,4 +18,4 @@ import Insights from "./Insights";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 
-export {Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound};
+export {Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, Therapist, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound};
