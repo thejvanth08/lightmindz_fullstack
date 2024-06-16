@@ -29,7 +29,7 @@ const Signup = () => {
 
   const onSubmit = async ({email, password}) => {
     try {
-      const { data } = await axios.post("/signup", {email, password});
+      const { data } = await axios.post("/auth/signup", {email, password});
       const userId = data.id;
       setId(userId);
       navigate("/details-one");

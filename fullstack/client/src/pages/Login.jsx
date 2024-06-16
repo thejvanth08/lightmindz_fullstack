@@ -20,7 +20,7 @@ const Login = () => {
 
   const onSubmit = async ({email, password}) => {
     try {
-      const { data } = await axios.post("/login", {email, password});
+      const { data } = await axios.post("/auth/login", {email, password});
       const userId = data.id;
       setId(userId);
       navigate("/home");

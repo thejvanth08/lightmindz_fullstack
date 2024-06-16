@@ -8,6 +8,13 @@ const axios = require("axios");
 const Sentiment = require("sentiment");
 require("dotenv").config();
 
+// middlewares
+const removeWarning = require("./middleware/warning");
+
+// routers
+const authRouter = require("./routers/auth");
+const moodsRouter = require("./routers/moods");
+
 const User = require("./models/User");
 
 const PORT = process.env.PORT || 3000;
@@ -15,16 +22,9 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 const dbUrl = process.env.MONGO_URL;
-const jwtSecret = process.env.JWT_SECRET;
 
 // warning in client
-app.use((req, res, next) => {
-  res.setHeader(
-    "Permissions-Policy",
-    "accelerometer=(), autoplay=(), clipboard-write=(), encrypted-media=(), gyroscope=(), picture-in-picture=(), web-share=()"
-  );
-  next();
-});
+app.use(removeWarning);
 
 app.use(express.json());
 app.use(
@@ -36,28 +36,29 @@ app.use(
 app.use(helmet());
 app.use(cookieParser());
 
+function authenticate(req, res, next) {
+  const token = req.cookies?.token;
+  if (token) {
+    try {
+      const payload = jwt.verify(token, jwtSecret);
+      console.log("valid token");
+      req.user = payload;
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    console.log("token not found");
+  }
+  // pass the execution to actual route handler
+  next();
+}
+
 app.get("/", (req, res) => {
   res.send("ok");
 });
 
-app.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const createdUser = await User.create({email, password});
-    console.log("created user in db");
-    const payload = {
-      id: createdUser._id,
-      email: createdUser.email
-    };
-    // sign new jwt
-    const token = jwt.sign(payload, jwtSecret, {expiresIn: "7 days"});
-    res.status(201).cookie("token", token).json({ id: createdUser._id });
-  } catch(err) {
-    if(err.code === 11000) {
-      res.status(422).json({ error: "Account with this email already exists"});
-    }
-  }
-});
+// signup & login
+app.use("/auth", authRouter);
       
 app.post("/verify-user", async (req, res) => {
   try {
@@ -81,29 +82,7 @@ app.post("/add-details", async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    // find => results in array, findOne -> single object
-    const foundUser = await User.findOne({email: email});
-    
-    // check provided password with original password
-    if(foundUser.password == password) {
-      // sign new jwt
-      const payload = {
-        id: foundUser._id,
-        email: foundUser.email
-      };
-      const token = jwt.sign(payload, jwtSecret, { expiresIn: "7 days" });
-      res.status(201).cookie("token", token).json({ id: foundUser._id });
-    } else {
-      res.status(401).json({ error: "wrong password" });
-    }
-  } catch(err) {
-    console.log(err);
-    res.status(404).json({ error: "user not found" });
-  }
-});
+app.use("/users/moods", moodsRouter);
 
 app.post("/rasa/message", async (req, res) => {
   const { message } = req.body;
