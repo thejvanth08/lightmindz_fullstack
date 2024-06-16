@@ -1,6 +1,6 @@
 import { Logo, Profile, Mood, Videos, Articles, TestCard } from "../../components";
 import { moods, assessments } from "../../constants/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import diaryIcon from "../../assets/images/diary-icon.png";
 
@@ -8,6 +8,13 @@ const Home = () => {
   const [selectedMood, setSelectedMood] = useState(null);
   const [exploreCategory, setExploreCategory] = useState("videos");
   const navigate = useNavigate();
+
+  // to fetch the data from db
+  useEffect(() => {
+    const getMood = async () => {
+
+    }
+  }, []);
 
   return (
     <div className="w-full pb-20">

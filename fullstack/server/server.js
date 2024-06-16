@@ -17,6 +17,7 @@ const moodsRouter = require("./routers/moods");
 
 const User = require("./models/User");
 
+const jwtSecret = process.env.JWT_SECRET;
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -82,7 +83,7 @@ app.post("/add-details", async (req, res) => {
   }
 });
 
-app.use("/users/moods", moodsRouter);
+// app.use("/users/moods", moodsRouter);
 
 app.post("/rasa/message", async (req, res) => {
   const { message } = req.body;
