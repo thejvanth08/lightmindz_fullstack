@@ -1,11 +1,21 @@
+import axios from "axios";
+
 const Mood = ({ name, emoji, selectedMood, setSelectedMood }) => {
-  const handleSelect = () => {
+  const handleSelect = async () => {
     // to clear
     if(selectedMood === name) {
       setSelectedMood("");
     } else {
       // newly select/to change new mood
       setSelectedMood(name);
+      const isUpload = confirm(`Are you sure in a ${name} mood ?`);
+      console.log(isUpload);
+      // upload the mood to DB - if user confirms
+      if(isUpload) {
+        const response = axios.post("/users/mood-tracker", {
+          mood: name
+        })
+      }
     }
   }
   

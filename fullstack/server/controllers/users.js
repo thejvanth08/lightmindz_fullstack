@@ -2,6 +2,7 @@ const axios = require("axios");
 const Sentiment = require("sentiment");
 const User = require("../models/User");
 const RasaChat = require("../models/RasaChat");
+const Mood = require("../models/Mood");
 
 const verifyToken = async (req, res) => {
   // req.user contains the payload of jwt
@@ -40,34 +41,46 @@ const messageRasa = async (req, res) => {
 
 // analyze the chat & save to db 
 const uploadChat = async (req, res) => {
-  const user = req.user;
   try {
     const { userChat } = req.body;
-    console.log(userChat);
     const userChatString = userChat.join(",");
     const sentiment = new Sentiment();
     const analysis = sentiment.analyze(userChatString);
-    // const userChatWithSentiment = userChat.map((msg, index) => {
-    //   const sentiment = new Sentiment();
-    //   const { score, calculation, words, positive, negative } =
-    //     sentiment.analyze(msg);
-    //   return {
-    //     message: msg,
-    //     sentiment: { score, calculation, words, positive, negative },
-    //   };
-    // });
+    // save in DB
     const result = await RasaChat.create({
-      userId: user.id,
+      userId: req.user.id,
       userMessages: userChat,
       analysis: analysis
     });
     console.log(result);
+    res.status(201).json("chat uploaded successfully");
   } catch (err) {
     console.log(err);
     res.status(500).json("cannot upload chat");
   }
 };
 
+const uploadMood = async (req, res) => {
+  const { mood } = req.body;
+  try {
+    const result = await Mood.create({
+      userId: req.user.id,
+      mood: mood
+    });
+    res.status(201).json("mood uploaded successfully");
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("mood not uploaded");
+  }
+}
+
+const uploadJournal = (req, res) => {
+
+}
+
+const uploadAssessment = (req, res) => {
+
+}
 
 
-module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat };
+module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment };

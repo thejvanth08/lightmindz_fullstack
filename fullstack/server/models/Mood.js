@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // ref: 'User' tells Mongoose which model/collection this ObjectId references.
-const trackerMoodSchema = new mongoose.Schema({
+const moodSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User", 
@@ -17,6 +17,6 @@ const trackerMoodSchema = new mongoose.Schema({
   }
 });
 
-const TrackerMood = mongoose.model("TrackerMood", trackerMoodSchema);
+const Mood = mongoose.model("Mood", moodSchema);
 
-module.exports = TrackerMood;
+module.exports = Mood;

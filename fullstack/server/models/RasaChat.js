@@ -7,7 +7,7 @@ const rasaChatSchema = new mongoose.Schema({
     required: true
   },
   userMessages: [String],
-  analysis: [Object],
+  analysis: Object,
   timestamp : {
     type: Date,
     default: Date.now
