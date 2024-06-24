@@ -6,8 +6,8 @@ const { verifyToken, addUserDetails, messageRasa, uploadChat } = require("../con
 // to verify the jwt token
 router.post("/verify", verifyToken);
 router.post("/add-details", addUserDetails);
-router.post("/rasa/message", messageRasa);
-router.post("/rasa/upload-chat", uploadChat);
+router.post("/message-rasa", messageRasa);
+router.post("/upload-chat", uploadChat);
 
 
 module.exports = router;

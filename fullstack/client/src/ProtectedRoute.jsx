@@ -21,7 +21,7 @@ const ProtectedRoute = (props) => {
       const token = cookies["token"].trim();
       // verify the jwt and set the id
       axios
-        .post("/verify-user", { token: token })
+        .post("/users/verify", { token: token })
         .then(({ data }) => {
           if (data.status == "success") {
             setId(data.payload.id);

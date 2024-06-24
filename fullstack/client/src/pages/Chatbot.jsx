@@ -12,7 +12,7 @@ const Chatbot = () => {
     console.log("conversation ended");
     setConversation([]);
     try {
-      const { data } = await axios.post("/rasa/upload-chat", {
+      const { data } = await axios.post("/users/upload-chat", {
         userChat: userChat
       });
 
@@ -40,7 +40,7 @@ const Chatbot = () => {
     inputEle.value = "";
 
     try {
-      const { data } = await axios.post("/rasa/message", {
+      const { data } = await axios.post("/users/message-rasa", {
         message: msg
       });
 

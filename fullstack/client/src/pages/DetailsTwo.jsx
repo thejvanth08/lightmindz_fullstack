@@ -18,7 +18,7 @@ const DetailsTwo = () => {
     const updatedDetails = { ...details, problems: problems };
     setDetails(updatedDetails);
     try {
-      const { data } = await axios.post("add-details", updatedDetails);
+      const { data } = await axios.post("/users/add-details", updatedDetails);
       console.log(data);
       navigate("/home");
     } catch(err) {

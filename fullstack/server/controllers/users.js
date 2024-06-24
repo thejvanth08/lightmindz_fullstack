@@ -3,13 +3,14 @@ const Sentiment = require("sentiment");
 const User = require("../models/User");
 
 const verifyToken = async (req, res) => {
-  res.status(200).json({ status: "success", payload });
+  // req.user contains the payload of jwt
+  res.status(200).json({ status: "success", payload: req.user });
 };
 
 const addUserDetails = async (req, res) => {
   const details = req.body;
   try {
-    const foundUser = await User.findOne({ _id: payload.id });
+    const foundUser = await User.findOne({ _id: req.user.id });
     foundUser.details = details;
     await foundUser.save();
     res.status(201).json("details added");
