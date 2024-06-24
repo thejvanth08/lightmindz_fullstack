@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
   },
   details: {
     type: Object
+  },
+  createdAt: {
+    type: Date,
+    // Date.now - function that returns the current time (it will be called by the mongoose during the creation of user)
+    // Date.now() - returns the direct value (creation of schema)
+    default: Date.now
   }
 });
 // 2nd arg to Schema: { timestamps: true } -> add createdAt prop

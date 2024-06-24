@@ -1,6 +1,7 @@
 const axios = require("axios");
 const Sentiment = require("sentiment");
 const User = require("../models/User");
+const RasaChat = require("../models/RasaChat");
 
 const verifyToken = async (req, res) => {
   // req.user contains the payload of jwt
@@ -39,23 +40,34 @@ const messageRasa = async (req, res) => {
 
 // analyze the chat & save to db 
 const uploadChat = async (req, res) => {
+  const user = req.user;
   try {
-    const foundUser = await User.findOne({ _id: payload.id });
     const { userChat } = req.body;
-    const userChatWithSentiment = userChat.map((msg, index) => {
-      const sentiment = new Sentiment();
-      const { score, calculation, words, positive, negative } =
-        sentiment.analyze(msg);
-      return {
-        message: msg,
-        sentiment: { score, calculation, words, positive, negative },
-      };
+    console.log(userChat);
+    const userChatString = userChat.join(",");
+    const sentiment = new Sentiment();
+    const analysis = sentiment.analyze(userChatString);
+    // const userChatWithSentiment = userChat.map((msg, index) => {
+    //   const sentiment = new Sentiment();
+    //   const { score, calculation, words, positive, negative } =
+    //     sentiment.analyze(msg);
+    //   return {
+    //     message: msg,
+    //     sentiment: { score, calculation, words, positive, negative },
+    //   };
+    // });
+    const result = await RasaChat.create({
+      userId: user.id,
+      userMessages: userChat,
+      analysis: analysis
     });
-    console.log(userChatWithSentiment);
+    console.log(result);
   } catch (err) {
     console.log(err);
-    res.status(400).json("cannot upload chat");
+    res.status(500).json("cannot upload chat");
   }
 };
+
+
 
 module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat };

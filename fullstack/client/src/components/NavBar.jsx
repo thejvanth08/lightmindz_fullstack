@@ -8,7 +8,8 @@ const NavBar = () => {
 
   const [cookies, setCookie, removeCookie] = useCookies();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    // no need to do anything about jwt on server-side as it is stateless, everything is maintained at client-side
     removeCookie("token");
     setId(null);
   }

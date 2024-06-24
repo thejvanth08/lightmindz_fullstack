@@ -1,12 +1,1 @@
-- data modeling
-- add selecting field crop in select-nodes page
-- display crop name along with field
-- auth
-- handle files in node.js
-- integrate model and fastapi
-- extract coordinates from image file
-- display diseased plots in map
-- show remedies for unique diseased crops
-- add user id along with sensor data while pushing to server
-- display remedies for latest sensor values
-- generate the report
+rasa run --enable-api --cors "*"
