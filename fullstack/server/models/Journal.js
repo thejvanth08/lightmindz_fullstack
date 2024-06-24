@@ -6,9 +6,8 @@ const journalSchema = new mongoose.Schema({
     ref: "User", 
     required: true 
   },
-  analysis: {
-    type: Object
-  },
+  content: String,
+  analysis: Object,
   timestamp: { 
     type: Date, 
     default: Date.now 

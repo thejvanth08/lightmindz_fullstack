@@ -12,7 +12,7 @@ const Mood = ({ name, emoji, selectedMood, setSelectedMood }) => {
       console.log(isUpload);
       // upload the mood to DB - if user confirms
       if(isUpload) {
-        const response = axios.post("/users/mood-tracker", {
+        const response = await axios.post("/users/mood-tracker", {
           mood: name
         })
       }

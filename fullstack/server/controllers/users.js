@@ -3,6 +3,8 @@ const Sentiment = require("sentiment");
 const User = require("../models/User");
 const RasaChat = require("../models/RasaChat");
 const Mood = require("../models/Mood");
+const Journal = require("../models/Journal");
+const Assessment = require("../models/Assessment");
 
 const verifyToken = async (req, res) => {
   // req.user contains the payload of jwt
@@ -44,8 +46,7 @@ const uploadChat = async (req, res) => {
   try {
     const { userChat } = req.body;
     const userChatString = userChat.join(",");
-    const sentiment = new Sentiment();
-    const analysis = sentiment.analyze(userChatString);
+    const analysis = analyzeSentiment(userChatString);
     // save in DB
     const result = await RasaChat.create({
       userId: req.user.id,
@@ -74,13 +75,45 @@ const uploadMood = async (req, res) => {
   }
 }
 
-const uploadJournal = (req, res) => {
-
+const uploadJournal = async (req, res) => {
+  const { content } = req.body;
+  try {
+    const analysis = analyzeSentiment(content);
+    const result = await Journal.create({
+      userId: req.user.id,
+      content: content,
+      analysis: analysis
+    });
+    res.status(201).json("upload journal successfully");
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("cannot upload journal");
+  }
 }
 
-const uploadAssessment = (req, res) => {
-
+const uploadAssessment = async (req, res) => {
+  const { score } = req.body;
+  let { id } = req.params;
+  console.log(score, id);
+  id = Number(id);
+  try {
+    const result = await Assessment.create({
+      userId: req.user.id,
+      assessmentId: id,
+      score: score
+    });
+    res.status(201).json("uploaded assessment successfully")
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("not uploaded assessment");
+  }
 }
 
 
 module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment };
+
+function analyzeSentiment(text) {
+  const sentiment = new Sentiment();
+  const analysis = sentiment.analyze(text);
+  return analysis;
+}

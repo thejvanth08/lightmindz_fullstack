@@ -6,7 +6,7 @@ const assessmentSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  number: {
+  assessmentId: {
     type: Number,
     required: true,
   },

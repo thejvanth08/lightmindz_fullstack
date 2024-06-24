@@ -1,6 +1,7 @@
 import { useParams, useLocation } from "react-router-dom";
 import { Logo, Profile } from "../../components";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Test = () => {
   const { id } = useParams();
@@ -8,7 +9,7 @@ const Test = () => {
   const [quesIndex, setQuesIndex] = useState(0);
   // answer for each question
   const [answer, setAnswer] = useState({});
-  // final score
+  // final score  
   const [totalScore, setTotalScore] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -42,17 +43,19 @@ const Test = () => {
     }
   }
   
-  const handleSubmit = () => {
-    if("score" in answer) {
+  const handleSubmit = async () => {
       setTotalScore((prevTotalScore) => prevTotalScore + answer.score);
       // as state update is asynchronous
       const latestScore = totalScore + answer.score;
-      console.log(latestScore);
-      // setIsSubmitted(true);
-    } else {
-
-    }
-    
+      setIsSubmitted(true);
+      try {
+        const response = await axios.post(`/users/assessment/${id}`, {
+          score: latestScore
+        });
+        console.log(response.data);
+      } catch(err) {
+        console.log(err);
+      }
   }
 
   return (
