@@ -1,10 +1,11 @@
-import { Logo, Profile, MoodsChart, AssessmentsChart } from "../components";
+import { Logo, Profile, MoodsChart, AssessmentsChart, JournalsChart } from "../components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Insights = () => {
   const [moodsData, setMoodsData] = useState(null);
   const [assessmentsData, setAssessmentsData] = useState(null);
+  const [journalsData, setJournalsData] = useState(null);
 
   const getMoods = async () => {
     try {
@@ -47,12 +48,31 @@ const Insights = () => {
     }
   }
 
+  const getJournals = async () => {
+    try {
+      const { data } = await axios.get("/users/journals");
+      let journalsData = data.data;
+      journalsData = journalsData.map((journalsDatum) => {
+        return {
+          timestamp: getProperTimeStamp(journalsDatum.timestamp),
+          score: journalsDatum.score,
+        };
+      });
+      return journalsData
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     const getData = async () => {
       const moodsData = await getMoods();
       setMoodsData(moodsData);
       const assessmentsData = await getAssessments();
       setAssessmentsData(assessmentsData);
+      const journalsData = await getJournals();
+      console.log(journalsData);
+      setJournalsData(journalsData);
     }
     getData();
   }, []);
@@ -68,7 +88,7 @@ const Insights = () => {
           Your Mental Health Insights
         </h1>
         <div className="w-full mt-6">
-          <h2 className="text-xl font-semibold text-center">Mood Tracker</h2>
+          <h2 className="text-xl font-semibold text-center">Mood Tracker - Moods</h2>
           {
             ( (moodsData?.length > 0) ? 
                <MoodsChart moodsData={moodsData} /> :
@@ -78,12 +98,22 @@ const Insights = () => {
           } 
         </div>
         <div className="w-full mt-6">
-          <h2 className="text-xl font-semibold text-center">Assessment</h2>
+          <h2 className="text-xl font-semibold text-center">Assessments - Score</h2>
           {
             ( (assessmentsData?.length > 0) ? 
                <AssessmentsChart assessmentsData={assessmentsData} /> :
                <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">
                   No Assessments Data Available
+                </div> )
+          } 
+        </div>
+        <div className="w-full mt-6">
+          <h2 className="text-xl font-semibold text-center">Daily Journals - Analysis</h2>
+          {
+            ( (journalsData?.length > 0) ? 
+               <JournalsChart journalsData={journalsData} /> :
+               <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">
+                  No Journals Data Available
                 </div> )
           } 
         </div>

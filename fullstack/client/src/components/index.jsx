@@ -13,5 +13,5 @@ import MusicPlayer from "./MusicPlayer";
 import ChatInput from "./ChatInput";
 import MoodsChart from "./MoodsChart"
 import AssessmentsChart from "./AssessmentsChart";
-
-export { Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard, MusicPlayer, ChatInput, MoodsChart, AssessmentsChart };
+import JournalsChart from "./JournalsChart";
+export { Logo, Input, Problem, Profile, Mood, NavBar, Back, Message, Videos, Articles, TestCard, MusicPlayer, ChatInput, MoodsChart, AssessmentsChart, JournalsChart };

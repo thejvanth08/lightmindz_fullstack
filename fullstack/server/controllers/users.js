@@ -94,7 +94,6 @@ const uploadJournal = async (req, res) => {
 const uploadAssessment = async (req, res) => {
   const { score } = req.body;
   let { id } = req.params;
-  console.log(score, id);
   id = Number(id);
   try {
     const result = await Assessment.create({
@@ -114,7 +113,6 @@ const getMoods = async (req, res) => {
   try {
     const projection = { _id: 0, mood: 1, timestamp: 1 };
     const result = await Mood.find({ userId: userId } , projection);
-    console.log(result);
     res.status(200).json({
       status: "success",
       data: result
@@ -130,7 +128,6 @@ const getAssessments = async (req, res) => {
   try {
     const projection = { _id: 0, assessmentId: 1, score: 1, timestamp: 1 };
     const result = await Assessment.find({ userId: userId}, projection);
-    console.log(result);
     res.status(200).json({
       status: "success", 
       data: result
@@ -141,7 +138,28 @@ const getAssessments = async (req, res) => {
   }
 }
 
-module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment, getMoods, getAssessments };
+const getJournals = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const projection = { _id: 0, "analysis.score": 1, timestamp: 1 };
+    let result = await Journal.find({ userId: userId }, projection);
+    result = result.map(({ analysis, timestamp }) => {
+      return {
+        score: analysis.score,
+        timestamp: timestamp
+      }
+    })
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("cannot get journals data");
+  }
+}
+
+module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals };
 
 function analyzeSentiment(text) {
   const sentiment = new Sentiment();
