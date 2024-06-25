@@ -1,4 +1,3 @@
-import React from "react";
 import {
   LineChart,
   Line,
@@ -10,17 +9,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const moodLabels = ["Bad 😖", "Bore 😕", "Okay 😑", "Good 😊", "Happy 😄"];
+const moodLabels = ["Bad😖", "Bore😕", "Okay😑", "Good😊", "Happy😄"];
 
 const MoodsChart = ({ moodsData }) => {
+
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart
         data={moodsData}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 5, right: 30, left: 30, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <RechartsXAxis dataKey="time" />
+        <RechartsXAxis
+          dataKey="timestamp"
+        />
         <RechartsYAxis
           type="number"
           domain={[0, moodLabels.length - 1]}

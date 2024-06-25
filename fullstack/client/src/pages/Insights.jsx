@@ -1,7 +1,6 @@
-import { Logo, Profile, MoodsChart } from "../components";
+import { Logo, Profile, MoodsChart, AssessmentsChart } from "../components";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { assessments } from "../constants/constants";
 
 const Insights = () => {
   const [moodsData, setMoodsData] = useState(null);
@@ -36,7 +35,13 @@ const Insights = () => {
     try {
       const { data } = await axios.get("/users/assessments");
       let assessmentsData = data.data;
-      console.log(assessmentsData);
+      assessmentsData = assessmentsData.map((assessmentsDatum) => {
+        return {
+          id: assessmentsDatum.assessmentId,
+          score: assessmentsDatum.score
+        }
+      })
+      return assessmentsData
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +53,6 @@ const Insights = () => {
       setMoodsData(moodsData);
       const assessmentsData = await getAssessments();
       setAssessmentsData(assessmentsData);
-      console.log(assessmentsData);
     }
     getData();
   }, []);
@@ -68,15 +72,19 @@ const Insights = () => {
           {
             ( (moodsData?.length > 0) ? 
                <MoodsChart moodsData={moodsData} /> :
-               <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">No Moods Data Available</div> )
+               <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">
+                  No Moods Data Available
+                </div> )
           } 
         </div>
         <div className="w-full mt-6">
           <h2 className="text-xl font-semibold text-center">Assessment</h2>
           {
-            ( (moodsData?.length > 0) ? 
-               <MoodsChart moodsData={moodsData} /> :
-               <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">No Moods Data Available</div> )
+            ( (assessmentsData?.length > 0) ? 
+               <AssessmentsChart assessmentsData={assessmentsData} /> :
+               <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">
+                  No Assessments Data Available
+                </div> )
           } 
         </div>
 
