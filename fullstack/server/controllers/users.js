@@ -53,7 +53,7 @@ const uploadChat = async (req, res) => {
       userMessages: userChat,
       analysis: analysis
     });
-    console.log(result);
+    // console.log(result);
     res.status(201).json("chat uploaded successfully");
   } catch (err) {
     console.log(err);
@@ -159,7 +159,28 @@ const getJournals = async (req, res) => {
   }
 }
 
-module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals };
+const getChatbotChats = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const projection = { _id: 0, "analysis.score": 1, timestamp: 1 };
+    let result = await RasaChat.find({ userId: userId }, projection);
+    result = result.map(({ analysis, timestamp }) => {
+      return {
+        score: analysis.score,
+        timestamp: timestamp
+      }
+    })
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("cannot get chatbot chats data");
+  }
+}
+
+module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals, getChatbotChats };
 
 function analyzeSentiment(text) {
   const sentiment = new Sentiment();

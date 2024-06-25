@@ -1,4 +1,4 @@
-import { Logo, Profile, MoodsChart, AssessmentsChart, JournalsChart } from "../components";
+import { Logo, Profile, MoodsChart, AssessmentsChart, JournalsChart, ChatsChart } from "../components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -6,6 +6,7 @@ const Insights = () => {
   const [moodsData, setMoodsData] = useState(null);
   const [assessmentsData, setAssessmentsData] = useState(null);
   const [journalsData, setJournalsData] = useState(null);
+  const [chatsData, setChatsData] = useState(null);
 
   const getMoods = async () => {
     try {
@@ -64,6 +65,22 @@ const Insights = () => {
     }
   }
 
+  const getChats = async () => {
+     try {
+      const { data } = await axios.get("/users/chatbot/chats");
+      let chatsData = data.data;
+      chatsData = chatsData.map((chatsDatum) => {
+        return {
+          timestamp: getProperTimeStamp(chatsDatum.timestamp),
+          score: chatsDatum.score,
+        };
+      });
+      return chatsData
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     const getData = async () => {
       const moodsData = await getMoods();
@@ -71,8 +88,9 @@ const Insights = () => {
       const assessmentsData = await getAssessments();
       setAssessmentsData(assessmentsData);
       const journalsData = await getJournals();
-      console.log(journalsData);
       setJournalsData(journalsData);
+      const chatsData = await getChats();
+      setChatsData(chatsData);
     }
     getData();
   }, []);
@@ -114,6 +132,16 @@ const Insights = () => {
                <JournalsChart journalsData={journalsData} /> :
                <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">
                   No Journals Data Available
+                </div> )
+          } 
+        </div>
+        <div className="w-full mt-6">
+          <h2 className="text-xl font-semibold text-center">Chatbot Chats - Analysis</h2>
+          {
+            ( (chatsData?.length > 0) ? 
+               <ChatsChart chatsData={chatsData} /> :
+               <div className="bg-violet-100 text-gray-500 text-lg font-semibold text-center max-w-80 p-4 mx-auto mt-3 rounded-lg">
+                  No Chats Data Available
                 </div> )
           } 
         </div>
