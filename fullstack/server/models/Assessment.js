@@ -13,7 +13,7 @@ const assessmentSchema = new mongoose.Schema({
   score: {
     type: Number,
   },
-  createdAt: {
+  timestamp: {
     type: Date,
     default: Date.now,
   },

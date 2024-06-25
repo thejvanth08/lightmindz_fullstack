@@ -109,8 +109,39 @@ const uploadAssessment = async (req, res) => {
   }
 }
 
+const getMoods = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const projection = { _id: 0, mood: 1, timestamp: 1 };
+    const result = await Mood.find({ userId: userId } , projection);
+    console.log(result);
+    res.status(200).json({
+      status: "success",
+      data: result
+    });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("cannot get moods data");
+  }
+}
 
-module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment };
+const getAssessments = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const projection = { _id: 0, assessmentId: 1, score: 1, timestamp: 1 };
+    const result = await Assessment.find({ userId: userId}, projection);
+    console.log(result);
+    res.status(200).json({
+      status: "success", 
+      data: result
+    });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("cannot get assessments data");
+  }
+}
+
+module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment, getMoods, getAssessments };
 
 function analyzeSentiment(text) {
   const sentiment = new Sentiment();
