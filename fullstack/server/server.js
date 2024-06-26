@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const { Server } = require("socket.io");
 
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
@@ -43,8 +44,20 @@ async function start() {
   } catch(err) {
     console.log("could not connect to the db", err);
   }
-  app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     console.log(`server is running at port ${PORT}`);
+  });
+
+  // socket.io
+  const io = new Server(server, {
+    // enable cors in development - client origin
+    cors: {
+      origin: "http://localhost:5173",
+    },
+  });
+  
+  io.on("connection", (socket) => {
+    console.log("a user connected", socket.id);
   });
 }
 

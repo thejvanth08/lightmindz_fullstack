@@ -12,6 +12,7 @@ const Chatbot = () => {
     console.log("conversation ended");
     setConversation([]);
     try {
+      // upload during termination
       const { data } = await axios.post("/users/chatbot/terminate", {
         userChat: userChat
       });
