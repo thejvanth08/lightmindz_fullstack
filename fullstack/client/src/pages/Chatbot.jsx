@@ -32,7 +32,7 @@ const Chatbot = () => {
     const updatedUserChat = [
       ...conversation,
       {
-        role: "user",
+        role: "current user",
         message: msg,
       },
     ];

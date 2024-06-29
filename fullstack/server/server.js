@@ -57,7 +57,11 @@ async function start() {
   });
   
   io.on("connection", (socket) => {
-    console.log("a user connected", socket.id);
+    // when getting msg from a client
+    socket.on("message", ({ username, msg }) => {
+      // forwarding to all other clients
+      socket.broadcast.emit("message", { username, msg });
+    })
   });
 }
 
