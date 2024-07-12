@@ -7,8 +7,6 @@ import { useAppData } from "../UserContext";
 const URL = "http://localhost:3000";
 const Forums = () => {
   const { user } = useAppData();
-  console.log(user);
-
   const [socket, setSocket] = useState(null);
   const [conversation, setConversation] = useState([]);
   const inputRef = useRef(null);  
@@ -18,18 +16,18 @@ const Forums = () => {
     setSocket(socket);
 
     // getting msg from other clients
-    socket.on("message", ({ msg, username }) => {
+    socket.on("message", ({ username, msg }) => {
       setConversation((prev) => [...prev, {
         username: username,
         role: "other user",
         message: msg
       }]);
-      console.log(msg, username);
     })
 
-    // on unmount -> terminate 
+    // on unmount -> terminate + store conversation to db 
     return () => {
-      socket.disconnect()
+      socket.disconnect();
+      console.log(conversation);
     }
   }, []);
 
@@ -41,7 +39,7 @@ const Forums = () => {
       role: "current user",
       message: inputVal
     }]);
-    socket.emit("message", inputVal);
+    socket.emit("message", { username: user, msg: inputVal });
     inputRef.current.value = "";
   }
 

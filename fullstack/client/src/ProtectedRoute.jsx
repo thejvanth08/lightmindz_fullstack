@@ -13,7 +13,7 @@ const ProtectedRoute = (props) => {
 
   const hideNavBar = noNavBarList.includes(location.pathname); 
 
-  const { id, setId } = useAppData();
+  const { id, setId, setUser } = useAppData();
 
   const [cookies, setCookie, removeCookie] = useCookies([]);
   useEffect(() => {
@@ -24,7 +24,9 @@ const ProtectedRoute = (props) => {
         .post("/users/verify", { token: token })
         .then(({ data }) => {
           if (data.status == "success") {
+            // console.log(data.payload);
             setId(data.payload.id);
+            setUser(data.payload.name);
             // if there is any state stored in the location
             // it will be useful in test page, the state must be sent while refreshing the page
             if(location.state) {

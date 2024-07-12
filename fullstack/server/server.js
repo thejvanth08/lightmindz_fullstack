@@ -50,17 +50,20 @@ async function start() {
 
   // socket.io
   const io = new Server(server, {
-    // enable cors in development - client origin
+    // enable cors in development - client's origin
     cors: {
       origin: "http://localhost:5173",
     },
+    // to resend the events to client, if the client was disconnected during transmission
+    // making the client to recover the lost events(data)
+    connectionStateRecovery: {},
   });
   
   io.on("connection", (socket) => {
     // when getting msg from a client
-    socket.on("message", ({ username, msg }) => {
+    socket.on("message", (data) => {
       // forwarding to all other clients
-      socket.broadcast.emit("message", { username, msg });
+      socket.broadcast.emit("message", data);
     })
   });
 }

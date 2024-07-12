@@ -14,8 +14,6 @@ const ContextProvider = ({ children }) => {
   const [id, setId] = useState(null);
   // user details
   const [details, setDetails] = useState({});
-  // user mood -> happy, sad,..
-  const [mood, setMood] = useState(null);
 
   const data = {
     user: user,
@@ -23,9 +21,7 @@ const ContextProvider = ({ children }) => {
     id : id,
     setId: setId,
     details: details,
-    setDetails: setDetails,
-    // mood: mood,
-    // setMood: setMood
+    setDetails: setDetails
   };
 
 

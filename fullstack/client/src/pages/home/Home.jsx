@@ -3,11 +3,13 @@ import { moods, assessments } from "../../constants/constants";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import diaryIcon from "../../assets/images/diary-icon.png";
+import { useAppData } from "../../UserContext";
 
 const Home = () => {
   const [selectedMood, setSelectedMood] = useState(null);
   const [exploreCategory, setExploreCategory] = useState("videos");
   const navigate = useNavigate();
+  const { user } = useAppData();
 
   return (
     <div className="w-full pb-20">
@@ -17,7 +19,7 @@ const Home = () => {
       </div>
       <div className="mt-4">
         <h1 className="text-xl font-bold text-center lg:text-3xl">
-          Welcome back, thomas!
+          Welcome back, { user }!
         </h1>
         <section className="mt-3 lg:mt-8">
           <h2 className="text-lg font-semibold text-center lg:text-xl">
