@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, 
   uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals,
-  getChatbotChats, storeSingleMsg, getForumChat } = require("../controllers/users");
+  getChatbotChats, storeSingleMsg, getForumChat, getHomeHistory } = require("../controllers/users");
 
 // these routes are protected
 // to verify the jwt token
@@ -19,5 +19,6 @@ router.get("/journals", getJournals);
 router.get("/chatbot/chats", getChatbotChats);
 router.post("/forum/message", storeSingleMsg);
 router.get("/forum/chat-history", getForumChat);
+router.get("/home/history", getHomeHistory);
 
 module.exports = router;

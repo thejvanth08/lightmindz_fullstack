@@ -27,9 +27,9 @@ const Signup = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema)});
 
-  const onSubmit = async ({email, password}) => {
+  const onSubmit = async ({ email, password }) => {
     try {
-      const { data } = await axios.post("/auth/signup", {email, password});
+      const { data } = await axios.post("/auth/signup", { email, password, role: "user" });
       const userId = data.id;
       setId(userId);
       navigate("/details-one");

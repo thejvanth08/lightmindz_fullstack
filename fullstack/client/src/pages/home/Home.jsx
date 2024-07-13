@@ -1,15 +1,33 @@
 import { Logo, Profile, Mood, Videos, Articles, TestCard } from "../../components";
 import { moods, assessments } from "../../constants/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import diaryIcon from "../../assets/images/diary-icon.png";
 import { useAppData } from "../../UserContext";
+import axios from "axios";
 
 const Home = () => {
   const [selectedMood, setSelectedMood] = useState(null);
   const [exploreCategory, setExploreCategory] = useState("videos");
+  const [completedAssessments, setCompletedAssessments] = useState([]);
   const navigate = useNavigate();
   const { user } = useAppData();
+
+  const getHomeHistory = async () => {
+     try {
+       const { data } = await axios.get("/users/home/history");
+       if (data.status == "success") {
+         setCompletedAssessments(data.data.assessmentIds);
+       }
+     } catch (err) {
+       console.log(err);
+     }
+  }
+
+  // fetch assessment & daily tracker history
+  useEffect(() => {
+    getHomeHistory();
+  }, []);
 
   return (
     <div className="w-full pb-20">
@@ -44,7 +62,7 @@ const Home = () => {
           <div className="flex max-w-[700px] justify-evenly overflow-x-auto mt-2 mx-auto lg:mt-4 scroll-style">
             {
               assessments.map((assessment) => (
-                <TestCard key={assessment.assessmentNo} {...assessment}></TestCard>
+                <TestCard completedAssessments={completedAssessments} key={assessment.assessmentNo} {...assessment}></TestCard>
               ))
             }
           </div>

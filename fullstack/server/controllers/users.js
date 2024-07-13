@@ -208,10 +208,27 @@ const getForumChat = async (req, res) => {
   }
 }
 
+const getHomeHistory = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    let assessments = await Assessment.find({ userId: userId }, { _id: 0, assessmentId: 1 });
+    assessmentIds = assessments.map((assessment) => assessment.assessmentId);
+    res.status(200).json({
+      status: "success",
+      data: {
+        assessmentIds,
+      },
+    });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("cannot get home history");
+  }
+}
+
 module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, 
   uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals, getChatbotChats,
-  storeSingleMsg, getForumChat
- };
+  storeSingleMsg, getForumChat, getHomeHistory
+};
 
 function analyzeSentiment(text) {
   const sentiment = new Sentiment();

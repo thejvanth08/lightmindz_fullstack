@@ -3,13 +3,14 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 
 const signup = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
   try {
     const createdUser = await User.create({ email, password });
     console.log("created user in db");
     const payload = {
       id: createdUser._id,
       email: createdUser.email,
+      role: role
     };
     // sign new jwt
     const token = jwt.sign(payload, jwtSecret, { expiresIn: "7 days" });
@@ -22,7 +23,7 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
   try {
     // find => results in array, findOne -> single object
     const foundUser = await User.findOne({ email: email });
@@ -33,6 +34,7 @@ const login = async (req, res) => {
       const payload = {
         id: foundUser._id,
         email: foundUser.email,
+        role: role
       };
       const token = jwt.sign(payload, jwtSecret, { expiresIn: "7 days" });
       res.status(201).cookie("token", token).json({ id: foundUser._id });
