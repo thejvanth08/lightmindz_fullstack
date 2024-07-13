@@ -5,6 +5,7 @@ const RasaChat = require("../models/RasaChat");
 const Mood = require("../models/Mood");
 const Journal = require("../models/Journal");
 const Assessment = require("../models/Assessment");
+const ForumChat = require("../models/ForumChat");
 
 const verifyToken = async (req, res) => {
   // req.user contains the payload of jwt
@@ -180,7 +181,37 @@ const getChatbotChats = async (req, res) => {
   }
 }
 
-module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals, getChatbotChats };
+const storeSingleMsg = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const result = await ForumChat.create({ userId: userId, messageData: req.body });
+    res.status(201).json({ status: "success" });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({ status: "failed" });
+  }
+};
+
+const getForumChat = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    // chronological order
+    let results = await ForumChat.find({ userId: userId }, { _id: 0, messageData: 1}).sort({ createdAt: 1 });
+    results = results.map((result) => result.messageData);
+    res.status(200).json({
+      status: "success",
+      data: results,
+    });
+  } catch(err) {
+    console.log(err);
+    res.status(500).json("cannot get forum chat history");
+  }
+}
+
+module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, 
+  uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals, getChatbotChats,
+  storeSingleMsg, getForumChat
+ };
 
 function analyzeSentiment(text) {
   const sentiment = new Sentiment();

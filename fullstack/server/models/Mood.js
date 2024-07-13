@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-// ref: 'User' tells Mongoose which model/collection this ObjectId references.
+// ref: 'User' tells Mongoose which model/collection this ObjectId refers
+// refers to document in which collection -> "User"
 const moodSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,

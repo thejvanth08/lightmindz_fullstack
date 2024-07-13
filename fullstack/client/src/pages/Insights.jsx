@@ -75,7 +75,7 @@ const Insights = () => {
           score: chatsDatum.score,
         };
       });
-      return chatsData
+      return chatsData;
     } catch (err) {
       console.log(err);
     }

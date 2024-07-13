@@ -62,7 +62,7 @@ async function start() {
   io.on("connection", (socket) => {
     // when getting msg from a client
     socket.on("message", (data) => {
-      // forwarding to all other clients
+      // forwarding to all other clients (other than sender)
       socket.broadcast.emit("message", data);
     })
   });

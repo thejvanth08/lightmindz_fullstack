@@ -420,7 +420,7 @@ export const navItems = [
   {
     name: "Forum",
     icon: communityIcon,
-    link: "/forums"
+    link: "/forum"
   },
   {
     name: "Insights",

@@ -13,9 +13,9 @@ import Meditation from "./self-care/Meditation";
 import ChillMusic from "./self-care/ChillMusic";
 import YogaTrainer from "./self-care/YogaTrainer";
 import Games from "../pages/self-care/Games";
-import Forums from "./Forums";
+import Forum from "./Forum";
 import Insights from "./Insights";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 
-export {Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, Therapist, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forums, Insights, Profile, NotFound};
+export {Landing, Login, Signup, DetailsOne, DetailsTwo, Home, Journal, Test, Chatbot, Therapist, SelfCare, Meditation, ChillMusic, YogaTrainer, Games, Forum, Insights, Profile, NotFound};

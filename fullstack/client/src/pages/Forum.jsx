@@ -2,43 +2,63 @@ import { io } from "socket.io-client";
 import { Logo, Profile, ChatInput, Message } from "../components";
 import { useState, useEffect, useRef } from "react";
 import { useAppData } from "../UserContext";
+import axios from "axios";
 
 // URL of http server which is attached with web socket server
 const URL = "http://localhost:3000";
-const Forums = () => {
+const Forum = () => {
   const { user } = useAppData();
   const [socket, setSocket] = useState(null);
   const [conversation, setConversation] = useState([]);
   const inputRef = useRef(null);  
 
+  const getChatHistory = async () => {
+    try {
+      const { data } = await axios.get("/users/forum/chat-history");
+      if(data.status == "success") {
+        console.log(data.data);
+        setConversation(data.data);
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     const socket = io(URL);
     setSocket(socket);
 
+    // restoring the messages from db
+    getChatHistory();
+
     // getting msg from other clients
     socket.on("message", ({ username, msg }) => {
-      setConversation((prev) => [...prev, {
+      const singleMsg = {
         username: username,
         role: "other user",
-        message: msg
-      }]);
+        message: msg,
+      };
+      storeMsg(singleMsg);
+      setConversation((prev) => [...prev, singleMsg]);
     })
 
     // on unmount -> terminate + store conversation to db 
     return () => {
       socket.disconnect();
-      console.log(conversation);
     }
   }, []);
 
   const handleSend = (e) => {
     e.preventDefault();
     const inputVal = inputRef.current.value;
-    setConversation((prev) => [...prev, {
+    const singleMsg = {
       username: user,
       role: "current user",
       message: inputVal
-    }]);
+    };
+    storeMsg(singleMsg);
+    setConversation((prev) => [...prev, singleMsg]);
+    console.log(user);
     socket.emit("message", { username: user, msg: inputVal });
     inputRef.current.value = "";
   }
@@ -62,4 +82,9 @@ const Forums = () => {
     </div>
   );
 }
-export default Forums;
+export default Forum;
+
+async function storeMsg(msg) {
+  const { data } = await axios.post("/users/forum/message", msg);
+  console.log(data);
+}

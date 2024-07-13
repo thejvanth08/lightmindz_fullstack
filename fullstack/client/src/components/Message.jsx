@@ -1,5 +1,4 @@
 const Message = ({ username, role, message }) => {
-  console.log(username);
 
   return (
     <div
