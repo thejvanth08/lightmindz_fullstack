@@ -8,9 +8,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 
-const Signup = () => {
+const UserSignup = () => {
   const navigate = useNavigate();
-  const { setId } = useAppData();
+  const { setId, setRole } = useAppData();
 
    const schema = yup.object().shape({
      email: yup.string().email().required(),
@@ -32,6 +32,7 @@ const Signup = () => {
       const { data } = await axios.post("/auth/signup", { email, password, role: "user" });
       const userId = data.id;
       setId(userId);
+      setRole(data.role);
       navigate("/details-one");
     } catch(err) {
       // if account already exists
@@ -78,7 +79,7 @@ const Signup = () => {
           <p className="text-center">
             Already have an account?&nbsp;
             <span
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/user-login")}
               className="text-primary font-semibold cursor-pointer"
             >
               Login
@@ -89,4 +90,4 @@ const Signup = () => {
     </main>
   );
 };
-export default Signup;
+export default UserSignup;

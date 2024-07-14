@@ -15,6 +15,7 @@ const handleError = require("./middleware/error-handler");
 // routers
 const authRouter = require("./routers/auth");
 const usersRouter = require("./routers/users");
+const doctorsRouter = require("./routers/doctors");
 
 const PORT = process.env.PORT || 3000;
 const dbUrl = process.env.MONGO_URL;
@@ -34,6 +35,7 @@ app.use(cookieParser());
 
 app.use("/auth", authRouter);
 app.use("/users", authenticate, usersRouter);
+app.use("/doctors", authenticate, doctorsRouter);
 
 app.use(handleError);
 

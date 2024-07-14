@@ -1,21 +1,30 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 const User = require("../models/User");
+const Doctor = require("../models/Doctor");
 
 const authenticate = async (req, res, next) => {
   const token = req.cookies?.token;
 
   if (token) {
-    try {
+    try { 
+
       const payload = jwt.verify(token, jwtSecret);
+      console.log(payload);
       req.user = payload;
-      // adding username
-      const user = await User.findOne({ _id: req.user.id });
-      req.user.name = user.details.fullname;
+      // // adding username
+      if(payload.role == "user") {
+        const user = await User.findOne({ _id: req.user.id });
+        req.user.name = user?.details?.fullname;
+      } else if(payload.role == "doctor") {
+        console.log("hi")
+        const doctor = await Doctor.findOne({ _id: req.user.id });
+        req.user.name = doctor?.details?.fullname;
+      }
       next();
     } catch (err) {
-      console.log("invalid token");
-      throw new Error("invalid token");
+      console.log(err);
+      throw err;
     }
   } else {
     console.log("token not found");

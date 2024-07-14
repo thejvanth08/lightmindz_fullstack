@@ -1,34 +1,42 @@
-import loginImg from "../assets/images/login.svg";
-import {Logo, Input} from "../components";
+import loginImg from "../../assets/images/doctor-login.svg";  
+import { Logo, Input } from "../../components";
 import axios from "axios";
-import { useAppData } from "../UserContext";
-import {useForm} from "react-hook-form";
+import { useAppData } from "../../UserContext";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const Login = () => {
+const DoctorLogin = () => {
   const navigate = useNavigate();
   const { setId } = useAppData();
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().min(3).max(20).required()
+    password: yup.string().min(3).max(20).required(),
   });
 
-  const {register, handleSubmit, formState: { errors }} = useForm({ resolver: yupResolver(schema) });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = async ({email, password}) => {
+  const onSubmit = async ({ email, password }) => {
+    console.log(email, password);
     try {
-      const { data } = await axios.post("/auth/login", {email, password, role: "user"});
+      const { data } = await axios.post("/auth/login", {
+        email,
+        password,
+        role: "doctor",
+      });
       const userId = data.id;
       setId(userId);
-      navigate("/home");
+      navigate("/doctor/home");
     } catch (err) {
       console.log(err);
     }
-  
-  }
+  };
 
   return (
     <main className="w-full h-screen flex items-center">
@@ -60,7 +68,7 @@ const Login = () => {
           <p className="text-center">
             Don't have an Account?&nbsp;
             <span
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/doctor-signup")}
               className="text-primary font-semibold cursor-pointer"
             >
               Sign Up
@@ -70,5 +78,5 @@ const Login = () => {
       </div>
     </main>
   );
-}
-export default Login;
+};
+export default DoctorLogin;

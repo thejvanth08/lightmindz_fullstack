@@ -12,8 +12,8 @@ const ContextProvider = ({ children }) => {
   
   const [user, setUser] = useState(null);
   const [id, setId] = useState(null);
-  // user details
-  const [details, setDetails] = useState({});
+  const [role, setRole] = useState(null);
+  const [details, setDetails] = useState(null);
 
   const data = {
     user: user,
@@ -21,7 +21,9 @@ const ContextProvider = ({ children }) => {
     id : id,
     setId: setId,
     details: details,
-    setDetails: setDetails
+    setDetails: setDetails,
+    role: role,
+    setRole: setRole
   };
 
 
