@@ -23,6 +23,7 @@ const DoctorDetailsOne = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data.profilePicture);
     setDetails(data);
     navigate("/doctor-details-two");
     if (errors) console.log(errors);
@@ -38,6 +39,15 @@ const DoctorDetailsOne = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-[400px] mx-auto mt-4"
       >
+        <label htmlFor="profile-picture" className="block w-full text-center my-1.5">
+          Upload your Profile Picture
+        </label>  
+        <Input
+          id="profile-picture"
+          type="file"
+          placeholder="Age"
+          {...register("profilePicture")}
+        ></Input>
         <Input
           type="text"
           placeholder="Full Name"

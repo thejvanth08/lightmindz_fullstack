@@ -10,7 +10,6 @@ const authenticate = async (req, res, next) => {
     try { 
 
       const payload = jwt.verify(token, jwtSecret);
-      console.log(payload);
       req.user = payload;
       // // adding username
       if(payload.role == "user") {

@@ -20,4 +20,15 @@ const verifyDoctorToken = async (req, res) => {
   res.status(200).json({ status: "success", payload: req.user });
 };
 
-module.exports = { addDoctorDetails, verifyDoctorToken };
+const getAvailableDoctors = async (req, res) => {
+  console.log("getting available doctors");
+  try {
+    // change query obj -> available: true
+    const results = await Doctor.find({});
+    res.status(200).json({ status: "success", data: results });
+  } catch(err) {
+    console.log(err);
+  }
+};
+
+module.exports = { addDoctorDetails, verifyDoctorToken, getAvailableDoctors };
