@@ -2,12 +2,17 @@ import { Input } from "../../components";
 import { useAppData } from "../../UserContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import profileIcon from "../../assets/images/profile-icon.png";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState, useRef } from "react";
 import * as yup from "yup";
 
 const DoctorDetailsOne = () => {
   const { setDetails } = useAppData();
   const navigate = useNavigate();
+  const [profileImg, setProfileImg] = useState(profileIcon);
+  const fileRef = useRef(null);
+
 
   const schema = yup.object().shape({
     fullname: yup.string().min(3).max(20).required(),
@@ -29,6 +34,14 @@ const DoctorDetailsOne = () => {
     if (errors) console.log(errors);
   };
 
+  const displayProfile = () => {
+     console.log(fileRef.current.files[0]);
+     const file = fileRef.current.files[0];
+     if (file) {
+       const url = URL.createObjectURL(file);
+       setProfileImg(url);
+     }
+  }
   return (
     <div className="pt-32">
       <h1 className="text-2xl font-bold lg:text-3xl text-center">
@@ -39,15 +52,11 @@ const DoctorDetailsOne = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-[400px] mx-auto mt-4"
       >
-        <label htmlFor="profile-picture" className="block w-full text-center my-1.5">
-          Upload your Profile Picture
-        </label>  
-        <Input
-          id="profile-picture"
-          type="file"
-          placeholder="Age"
-          {...register("profilePicture")}
-        ></Input>
+        <img src={profileImg} alt="" 
+          className="w-20 h-auto" />
+        <label htmlFor="profile-img">Upload Your Profile Photo</label>
+        <input id="profile-img" type="file" accept="image/*" ref={fileRef} onChange={displayProfile}
+          className="hidden" />
         <Input
           type="text"
           placeholder="Full Name"

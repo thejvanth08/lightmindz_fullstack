@@ -9,6 +9,7 @@ const Therapist = () => {
     const getAvailableDoctors = async () => {
       const { data } = await axios.get("/doctors/available-list");
       console.log(data.data);
+      setDoctors(data.data);
     }
     getAvailableDoctors();
   }, []);
@@ -27,7 +28,13 @@ const Therapist = () => {
           <h2 className="text-xl font-semibold text-center">
             List of Professionals
           </h2>
-          
+          <div>
+            {/* {
+              doctors.map((doctor) => <div>
+
+              </div>)
+            } */}
+          </div>
         </div>
         
       </section>
