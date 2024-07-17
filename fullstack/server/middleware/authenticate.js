@@ -16,7 +16,6 @@ const authenticate = async (req, res, next) => {
         const user = await User.findOne({ _id: req.user.id });
         req.user.name = user?.details?.fullname;
       } else if(payload.role == "doctor") {
-        console.log("hi")
         const doctor = await Doctor.findOne({ _id: req.user.id });
         req.user.name = doctor?.details?.fullname;
       }
