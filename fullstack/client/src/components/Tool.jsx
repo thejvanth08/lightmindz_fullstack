@@ -9,7 +9,13 @@ const Tool = ({ name, link, image }) => {
 
   return (
     <div
-      onClick={handleClick} 
+      onClick={() => {
+        if(name == "Yoga Trainer") {
+          document.location.assign("http://localhost:3001/");
+        } else {
+          handleClick(); 
+        }
+      }} 
       className={`max-w-[600px] bg-violet-100 px-2 py-1 mb-2 mx-auto rounded-lg flex justify-evenly items-center cursor-pointer lg:shrink-0 lg:basis-[500px] ${name === "Therapist" ? "py-2" : ""}`}>
       <p className="text-xl font-semibold">
         { name }
