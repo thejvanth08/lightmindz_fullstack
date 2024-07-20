@@ -1,10 +1,7 @@
-const mongoose = require("mongoose");
-const axios = require("axios");
 const Doctor = require("../models/Doctor");
 
 const addDoctorDetails = async (req, res) => {
   const details = req.body;
-  console.log(details);
   try {
     const foundDoctor = await Doctor.findOne({ _id: req.user.id });
     foundDoctor.details = details;

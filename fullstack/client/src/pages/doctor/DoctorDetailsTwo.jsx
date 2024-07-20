@@ -15,9 +15,8 @@ const DoctorDetailsTwo = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    // e.preventDefault();
-    const updatedDetails = { ...details, ...data};
+  const onSubmit = async (formData) => {
+    const updatedDetails = { ...details, ...formData};
     setDetails(updatedDetails);
     try {
       const { data } = await axios.post("/doctors/add-details", updatedDetails);

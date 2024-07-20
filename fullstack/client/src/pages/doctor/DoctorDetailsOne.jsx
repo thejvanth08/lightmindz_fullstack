@@ -29,11 +29,9 @@ const DoctorDetailsOne = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(base64Img);
-    data.profilePic = base64Img;
-    console.log(data);
-    setDetails(data);
+  const onSubmit = (formData) => {
+    formData.profilePic = base64Img;
+    setDetails(formData);
     navigate("/doctor-details-two");
     if (errors) console.log(errors);
   };
@@ -45,10 +43,11 @@ const DoctorDetailsOne = () => {
         const url = URL.createObjectURL(file);
         // setProfileImg(url); // This sets the profile image URL
         let base64string = await getBase64(file);
-        setProfileImg(base64Img);
+        // displaying img dynamically
+        setProfileImg(url);
         // actual encoded data
         base64string = base64string.split(",")[1];
-        console.log(base64string);
+        // console.log(base64string);
         setBase64Img(base64string); // This sets the base64 image string
       } catch (error) {
         console.error("Error reading file:", error);

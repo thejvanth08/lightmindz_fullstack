@@ -6,7 +6,6 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 
 const DoctorProtectedRoute = (props) => {
-  console.log("hi");
   const navigate = useNavigate();
 
   const location = useLocation();
