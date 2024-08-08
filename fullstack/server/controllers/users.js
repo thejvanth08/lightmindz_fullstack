@@ -25,24 +25,19 @@ const addUserDetails = async (req, res) => {
 };
 
 const messageRasa = async (req, res) => {
-  const { message } = req.body;
+  const { chat } = req.body;
+  console.log(chat);
   try {
-    const { data } = await axios.post(
-      "http://127.0.0.1:5005/webhooks/rest/webhook",
-      {
-        message: message,
-      }
-    );
-    // rasa response
-    const rasaResponse = data[0].text;
-    res.status(201).json({ response: rasaResponse });
+    const { data } = await axios.post(process.env.OLLAMA_URL, chat);
+    console.log(data);
+    res.status(200).json({ response: data.response });
   } catch (err) {
-    res.status(400).json("error happened");
-    console.log(err);
+    // res.status(400).json("error happened");
+    // console.log(err);
   }
 };
 
-// analyze the chat & save to db 
+// analyze the chat & save to db
 const uploadChat = async (req, res) => {
   try {
     const { userChat } = req.body;
@@ -52,7 +47,7 @@ const uploadChat = async (req, res) => {
     const result = await RasaChat.create({
       userId: req.user.id,
       userMessages: userChat,
-      analysis: analysis
+      analysis: analysis,
     });
     // console.log(result);
     res.status(201).json("chat uploaded successfully");
@@ -67,14 +62,14 @@ const uploadMood = async (req, res) => {
   try {
     const result = await Mood.create({
       userId: req.user.id,
-      mood: mood
+      mood: mood,
     });
     res.status(201).json("mood uploaded successfully");
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json("mood not uploaded");
   }
-}
+};
 
 const uploadJournal = async (req, res) => {
   const { content } = req.body;
@@ -83,14 +78,14 @@ const uploadJournal = async (req, res) => {
     const result = await Journal.create({
       userId: req.user.id,
       content: content,
-      analysis: analysis
+      analysis: analysis,
     });
     res.status(201).json("upload journal successfully");
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json("cannot upload journal");
   }
-}
+};
 
 const uploadAssessment = async (req, res) => {
   const { score } = req.body;
@@ -100,44 +95,44 @@ const uploadAssessment = async (req, res) => {
     const result = await Assessment.create({
       userId: req.user.id,
       assessmentId: id,
-      score: score
+      score: score,
     });
-    res.status(201).json("uploaded assessment successfully")
-  } catch(err) {
+    res.status(201).json("uploaded assessment successfully");
+  } catch (err) {
     console.log(err);
     res.status(500).json("not uploaded assessment");
   }
-}
+};
 
 const getMoods = async (req, res) => {
   const userId = req.user.id;
   try {
     const projection = { _id: 0, mood: 1, timestamp: 1 };
-    const result = await Mood.find({ userId: userId } , projection);
+    const result = await Mood.find({ userId: userId }, projection);
     res.status(200).json({
       status: "success",
-      data: result
+      data: result,
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json("cannot get moods data");
   }
-}
+};
 
 const getAssessments = async (req, res) => {
   const userId = req.user.id;
   try {
     const projection = { _id: 0, assessmentId: 1, score: 1, timestamp: 1 };
-    const result = await Assessment.find({ userId: userId}, projection);
+    const result = await Assessment.find({ userId: userId }, projection);
     res.status(200).json({
-      status: "success", 
-      data: result
+      status: "success",
+      data: result,
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json("cannot get assessments data");
   }
-}
+};
 
 const getJournals = async (req, res) => {
   const userId = req.user.id;
@@ -147,9 +142,9 @@ const getJournals = async (req, res) => {
     result = result.map(({ analysis, timestamp }) => {
       return {
         score: analysis.score,
-        timestamp: timestamp
-      }
-    })
+        timestamp: timestamp,
+      };
+    });
     res.status(200).json({
       status: "success",
       data: result,
@@ -158,7 +153,7 @@ const getJournals = async (req, res) => {
     console.log(err);
     res.status(500).json("cannot get journals data");
   }
-}
+};
 
 const getChatbotChats = async (req, res) => {
   const userId = req.user.id;
@@ -168,9 +163,9 @@ const getChatbotChats = async (req, res) => {
     result = result.map(({ analysis, timestamp }) => {
       return {
         score: analysis.score,
-        timestamp: timestamp
-      }
-    })
+        timestamp: timestamp,
+      };
+    });
     res.status(200).json({
       status: "success",
       data: result,
@@ -179,14 +174,17 @@ const getChatbotChats = async (req, res) => {
     console.log(err);
     res.status(500).json("cannot get chatbot chats data");
   }
-}
+};
 
 const storeSingleMsg = async (req, res) => {
   const userId = req.user.id;
   try {
-    const result = await ForumChat.create({ userId: userId, messageData: req.body });
+    const result = await ForumChat.create({
+      userId: userId,
+      messageData: req.body,
+    });
     res.status(201).json({ status: "success" });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json({ status: "failed" });
   }
@@ -196,22 +194,28 @@ const getForumChat = async (req, res) => {
   const userId = req.user.id;
   try {
     // chronological order
-    let results = await ForumChat.find({ userId: userId }, { _id: 0, messageData: 1}).sort({ createdAt: 1 });
+    let results = await ForumChat.find(
+      { userId: userId },
+      { _id: 0, messageData: 1 },
+    ).sort({ createdAt: 1 });
     results = results.map((result) => result.messageData);
     res.status(200).json({
       status: "success",
       data: results,
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json("cannot get forum chat history");
   }
-}
+};
 
 const getHomeHistory = async (req, res) => {
   const userId = req.user.id;
   try {
-    let assessments = await Assessment.find({ userId: userId }, { _id: 0, assessmentId: 1 });
+    let assessments = await Assessment.find(
+      { userId: userId },
+      { _id: 0, assessmentId: 1 },
+    );
     assessmentIds = assessments.map((assessment) => assessment.assessmentId);
     res.status(200).json({
       status: "success",
@@ -219,15 +223,27 @@ const getHomeHistory = async (req, res) => {
         assessmentIds,
       },
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
     res.status(500).json("cannot get home history");
   }
-}
+};
 
-module.exports = { verifyToken, addUserDetails, messageRasa, uploadChat, uploadMood, 
-  uploadJournal, uploadAssessment, getMoods, getAssessments, getJournals, getChatbotChats,
-  storeSingleMsg, getForumChat, getHomeHistory
+module.exports = {
+  verifyToken,
+  addUserDetails,
+  messageRasa,
+  uploadChat,
+  uploadMood,
+  uploadJournal,
+  uploadAssessment,
+  getMoods,
+  getAssessments,
+  getJournals,
+  getChatbotChats,
+  storeSingleMsg,
+  getForumChat,
+  getHomeHistory,
 };
 
 function analyzeSentiment(text) {

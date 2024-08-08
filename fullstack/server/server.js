@@ -24,12 +24,14 @@ const app = express();
 
 app.use(removeWarning);
 app.use(express.json());
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true,
+    origin: "http://localhost:5173", // Frontend origin
+    credentials: true, // Allow cookies and other credentials
   })
 );
+
 app.use(helmet());
 app.use(cookieParser());
 

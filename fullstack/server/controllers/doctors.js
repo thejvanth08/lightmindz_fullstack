@@ -1,16 +1,9 @@
 const Doctor = require("../models/Doctor");
 
 const addDoctorDetails = async (req, res) => {
-  const details = req.body;
-  try {
-    const foundDoctor = await Doctor.findOne({ _id: req.user.id });
-    foundDoctor.details = details;
-    await foundDoctor.save();
-    res.status(201).json("details added");
-  } catch (err) {
-    console.log(err);
-  }
-};
+  console.log(req.body);
+  res.send("got the msg from server");
+}
 
 const verifyDoctorToken = async (req, res) => {
   // req.user contains the payload of jwt

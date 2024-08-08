@@ -1,4 +1,4 @@
-import { Logo, Profile, Message, ChatInput } from "../components";
+import { Logo, Profile, BotMessage, ChatInput } from "../components";
 import { useState, useRef } from "react";
 import axios from "axios";
 
@@ -6,54 +6,59 @@ const Chatbot = () => {
   const [conversation, setConversation] = useState([]);
 
   const inputRef = useRef(null);
-  
+
   const handleEnd = async () => {
-    const userChat = conversation.filter((chat) => chat.role === "user").map((chat) => chat.message);
+    const userChat = conversation
+      .filter((chat) => chat.role === "user")
+      .map((chat) => chat.content);
+    console.log(userChat);
     console.log("conversation ended");
     setConversation([]);
+
     try {
       // upload during termination
       const { data } = await axios.post("/users/chatbot/terminate", {
-        userChat: userChat
+        userChat: userChat,
       });
-
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
-
   };
 
   const handleSend = async (e) => {
-    if(e) {
+    if (e) {
       e.preventDefault();
     }
     const inputEle = inputRef.current;
     const msg = inputEle.value;
-    const updatedUserChat = [
+    const updatedConversation = [
       ...conversation,
       {
-        role: "current user",
-        message: msg,
+        role: "user",
+        content: msg,
       },
     ];
-    
-    setConversation(updatedUserChat);
+
+    setConversation(updatedConversation);
     inputEle.value = "";
 
     try {
       const { data } = await axios.post("/users/chatbot/message", {
-        message: msg
+        chat: updatedConversation,
       });
 
-      const updatedBotChat = [...updatedUserChat, { 
-        role: "bot",
-        message: data.response
-      }]
+      const updatedBotChat = [
+        ...updatedConversation,
+        {
+          role: "assistant",
+          content: data.response,
+        },
+      ];
       setConversation(updatedBotChat);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   return (
     <div className="px-2.5 py-2 pb-20">
@@ -65,7 +70,7 @@ const Chatbot = () => {
         <div className="max-w-[600px] h-[70vh] p-2 mx-auto overflow-y-auto rounded-lg shadow-md shadow-violet-300 lg:max-w-[800px]">
           {conversation.length > 0 &&
             conversation.map((msgItem, index) => (
-              <Message key={index} {...msgItem}></Message>
+              <BotMessage key={index} {...msgItem}></BotMessage>
             ))}
         </div>
         <ChatInput

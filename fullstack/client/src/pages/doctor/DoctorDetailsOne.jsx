@@ -7,6 +7,7 @@ import uploadIcon from "../../assets/images/upload-icon.png";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState, useRef } from "react";
 import * as yup from "yup";
+import axios from "axios";
 
 const DoctorDetailsOne = () => {
   const { details, setDetails } = useAppData();
@@ -29,9 +30,28 @@ const DoctorDetailsOne = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (formData) => {
+  const onSubmit = async ({ fullname, mobileNum, age, gender, profilePic }, e) => {
+    e.preventDefault();
     formData.profilePic = base64Img;
-    setDetails(formData);
+    // setDetails(formData);
+
+    console.log(formData);
+    try {
+      // console.log(updatedDetails);
+      // const { data } = await axios.post("/doctors/add-details", formData);
+      // console.log(data);
+      const res = axios.post("/doctors/demo", {
+        fullname,
+        mobileNum,
+        age,
+        gender,
+      });
+      console.log(res.data);
+      navigate("/doctor/home");
+    } catch (err) {
+      console.log(err);
+    }
+
     navigate("/doctor-details-two");
     if (errors) console.log(errors);
   };

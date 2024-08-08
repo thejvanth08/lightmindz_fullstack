@@ -15,11 +15,11 @@ const DoctorDetailsTwo = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (formData) => {
-    const updatedDetails = { ...details, ...formData};
-    setDetails(updatedDetails);
+  const onSubmit = async (formData, e) => {
+    e.preventDefault();
+    console.log("two", formData);
     try {
-      const { data } = await axios.post("/doctors/add-details", updatedDetails);
+      const { data } = await axios.post("/doctors/add-details", formData);
       console.log(data);
       navigate("/doctor/home");
     } catch (err) {
